@@ -1,4 +1,3 @@
-"use client";
 import React, { useRef, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
@@ -123,7 +122,7 @@ function GradientBackground() {
   useFrame(({ clock }) => {
     if (backgroundRef.current) {
       const material = backgroundRef.current.material as THREE.ShaderMaterial;
-      material.uniforms.time.value = clock.getElapsedTime();
+      // material.uniforms.time.value = clock.getElapsedTime();
     }
   });
 

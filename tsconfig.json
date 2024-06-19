@@ -5,6 +5,7 @@
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
+    "typeRoots": ["./node_modules/@types", "./typings"],
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
@@ -21,6 +22,12 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/Background.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/components/Background.tsx"
+  ],
   "exclude": ["node_modules"]
 }
