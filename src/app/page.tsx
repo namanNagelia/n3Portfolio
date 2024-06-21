@@ -25,6 +25,19 @@ const Model = () => {
   );
 };
 
+const HeroPlanet = () => {
+  const gltf = useLoader(GLTFLoader, "./HeroPlanet.gltf");
+  // const colorMap = useLoader(TextureLoader, "finaltexture.png");
+
+  return (
+    <>
+      <ambientLight intensity={10} />
+      <primitive object={gltf.scene} scale={1.7} />
+    </>
+  );
+};
+
+
 export default function Home() {
   return (
     <div
@@ -41,14 +54,23 @@ export default function Home() {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
+            zIndex: 1000,
           }}
         >
-          <Image
+          <div className="w-full h-full">
+            <Canvas>
+              <Suspense fallback={null}>
+                <OrbitControls enableZoom={false} />
+                <HeroPlanet />
+              </Suspense>
+            </Canvas>
+          </div>
+          {/* <Image
             src={HeroImage}
             alt="An illustration of a techy planet with rings around it"
             width={700}
             height={700}
-          />
+          /> */}
         </ParallaxLayer>
         <ParallaxLayer
           speed={0.5}
