@@ -60,7 +60,7 @@ export default function Home() {
           <div className="w-full h-full">
             <Canvas>
               <Suspense fallback={null}>
-                <OrbitControls enableZoom={false} />
+                <OrbitControls enableZoom={false} autoRotate />
                 <HeroPlanet />
               </Suspense>
             </Canvas>
