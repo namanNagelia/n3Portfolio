@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Stars } from "@react-three/drei";
+import { Stars, useTexture } from "@react-three/drei";
 import * as THREE from "three";
-import SpiralGalaxy from "./galaxy";
 
 function GradientBackground() {
   const backgroundRef = useRef<THREE.Mesh>(null);
@@ -122,13 +121,62 @@ function GradientBackground() {
   useFrame(({ clock }) => {
     if (backgroundRef.current) {
       const material = backgroundRef.current.material as THREE.ShaderMaterial;
-      // material.uniforms.time.value = clock.getElapsedTime();
+      material.uniforms.time.value = clock.getElapsedTime();
     }
   });
 
   return (
     <mesh ref={backgroundRef}>
       <sphereGeometry args={[500, 64, 64]} />
+    </mesh>
+  );
+}
+
+function SpiralingGalaxy() {
+  const galaxyRef = useRef<THREE.Group>(null);
+
+  useFrame(() => {
+    if (galaxyRef.current) {
+      galaxyRef.current.rotation.y += 0.001; // Rotate the galaxy slowly
+    }
+  });
+
+  return (
+    <group ref={galaxyRef}>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <mesh
+          key={index}
+          position={[
+            Math.random() * 50 - 25,
+            Math.random() * 50 - 25,
+            Math.random() * 50 - 25,
+          ]}
+        >
+          <sphereGeometry args={[0.5, 16, 16]} />
+          <meshBasicMaterial
+            color={new THREE.Color(`hsl(${Math.random() * 360}, 100%, 75%)`)}
+          />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+function MovingObject() {
+  const objectRef = useRef<THREE.Mesh>(null);
+
+  useFrame(({ clock }) => {
+    if (objectRef.current) {
+      const time = clock.getElapsedTime();
+      objectRef.current.position.x = Math.sin(time) * 10;
+      objectRef.current.position.y = Math.cos(time) * 10;
+    }
+  });
+
+  return (
+    <mesh ref={objectRef} position={[0, 0, -20]}>
+      <sphereGeometry args={[1, 16, 16]} />
+      <meshBasicMaterial color="red" />
     </mesh>
   );
 }

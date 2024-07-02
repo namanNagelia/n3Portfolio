@@ -12,7 +12,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import HeroImage from "../../public/HeroImage.png";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
-
+import ProjectCard from "./components/projectCard";
 const Model = () => {
   const gltf = useLoader(GLTFLoader, "./PlanetOne.gltf");
   const colorMap = useLoader(TextureLoader, "finaltexture.png");
@@ -37,13 +37,20 @@ const HeroPlanet = () => {
   );
 };
 
-
 export default function Home() {
+  const exampleProject = {
+    title: "Example Project",
+    description: "This is an example project description.",
+    technologies: ["React", "Next.js", "TypeScript"],
+    image: "/path/to/image.jpg", // Replace with the actual image path
+    link: "https://example.com",
+    github: "https://github.com/example",
+    demo: "https://example.com/demo",
+    isMobile: false,
+  };
+
   return (
-    <div
-      style={{ height: "100vh", width: "100vw" }}
-      // style={{ position: "relative", minHeight: "100vh", overflow: "hidden" }}
-    >
+    <div style={{ height: "100vh", width: "100vw" }}>
       <Background />
 
       <Parallax pages={2}>
@@ -65,12 +72,6 @@ export default function Home() {
               </Suspense>
             </Canvas>
           </div>
-          {/* <Image
-            src={HeroImage}
-            alt="An illustration of a techy planet with rings around it"
-            width={700}
-            height={700}
-          /> */}
         </ParallaxLayer>
         <ParallaxLayer
           speed={0.5}
@@ -89,23 +90,8 @@ export default function Home() {
         </ParallaxLayer>
       </Parallax>
 
-      {/* <main className="min-h-screenp-24">
-        <div className="relative z-10 flex flex-col items-center justify-center text-center mt-16">
-          <Image src={HeroImage} alt="An illustration of a techy planet with rings around it" width={700} height={700} />
-          <h1 className="text-6xl font-georgia text-white">Naman Nagelia</h1>
-          <h2 className="text-3xl font-georgia text-white mt-4">
-            Software and AI Developer
-          </h2>
-        </div>
-        </main> */}
-      {/* <div className="w-full h-[500px]">
-          <Canvas>
-          <Suspense fallback={null}>
-          <OrbitControls />
-          <Model />
-          </Suspense>
-          </Canvas>
-          </div> */}
+      {/* Place ProjectCard component here */}
+      <ProjectCard {...exampleProject} />
     </div>
   );
 }
