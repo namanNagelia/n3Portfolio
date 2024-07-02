@@ -61,10 +61,10 @@ export default function Home() {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            zIndex: 1000,
+            zIndex: 3,
           }}
         >
-          <div className="w-full h-full">
+          <div className="w-[75%] h-full">
             <Canvas>
               <Suspense fallback={null}>
                 <OrbitControls enableZoom={false} autoRotate />
@@ -75,12 +75,13 @@ export default function Home() {
         </ParallaxLayer>
         <ParallaxLayer
           speed={0.5}
-          offset={0.35}
+          offset={0.75}
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
+            height: "10vh"
           }}
         >
           <h1 className="text-6xl font-georgia text-white">Naman Nagelia</h1>
