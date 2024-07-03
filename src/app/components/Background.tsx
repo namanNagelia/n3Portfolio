@@ -121,7 +121,7 @@ function GradientBackground() {
   useFrame(({ clock }) => {
     if (backgroundRef.current) {
       const material = backgroundRef.current.material as THREE.ShaderMaterial;
-      material.uniforms.time.value = clock.getElapsedTime();
+      //material.uniforms.time.value = clock.getElapsedTime();
     }
   });
 

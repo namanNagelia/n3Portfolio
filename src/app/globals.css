@@ -30,4 +30,14 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .default-glass {
+    position: relative;
+    background-color: rgba(29, 45, 73, 0.97);
+    box-shadow: inset 72.433px -72.433px 72.433px 0px rgba(165, 165, 165, 0.11),
+      inset -72.433px 72.433px 72.433px 0px rgba(255, 255, 255, 0.11);
+    z-index: 5;
+    /* box-shadow: inset 0 0 20px #ffffff; /* Inner shadow */
+    /* backdrop-filter: blur(20px); Background blur */
+  }
 }

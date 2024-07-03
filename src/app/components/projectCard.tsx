@@ -1,5 +1,4 @@
 import React from "react";
-import "./box.css";
 import Image from "next/image";
 
 interface Props {
@@ -24,7 +23,7 @@ const ProjectCard: React.FC<Props> = ({
   isMobile,
 }) => {
   return (
-    <div className="relative box_style">
+    <div className="default-glass rounded-xl p-5 w-[60%] h-auto">
       <div className="absolute inset-0 style_2"></div>
       <div className="relative z-10">
         <Image src={image} alt={title} width={200} height={200} />
