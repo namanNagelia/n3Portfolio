@@ -53,15 +53,16 @@ export default function Home() {
     <div style={{ height: "100vh", width: "100vw" }}>
       <Background />
 
-      <Parallax pages={2}>
+      <Parallax pages={3} style={{ top: 0 }}>
         <ParallaxLayer
           speed={0.2}
+          offset={0}
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            zIndex: 3,
+            zIndex: 0,
           }}
         >
           <div className="w-[75%] h-full">
@@ -74,14 +75,14 @@ export default function Home() {
           </div>
         </ParallaxLayer>
         <ParallaxLayer
-          speed={0.5}
-          offset={0.75}
+          speed={0.75}
+          offset={0.3}
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            height: "10vh"
+            zIndex: 1,
           }}
         >
           <h1 className="text-6xl font-georgia text-white">Naman Nagelia</h1>
@@ -89,10 +90,21 @@ export default function Home() {
             Software and AI Developer
           </h2>
         </ParallaxLayer>
+        <ParallaxLayer
+          speed={0.2}
+          offset={1}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            height: "5vh",
+          }}
+        >
+          {/* Place ProjectCard component here */}
+          <ProjectCard {...exampleProject} />
+        </ParallaxLayer>
       </Parallax>
-
-      {/* Place ProjectCard component here */}
-      <ProjectCard {...exampleProject} />
     </div>
   );
 }
