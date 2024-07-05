@@ -114,6 +114,10 @@ export default function Home() {
     isMobile: false,
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Header />
@@ -162,18 +166,18 @@ export default function Home() {
             <h1 className="md:text-6xl text-5xl font-georgia text-white text-center">
               Naman Nagelia
             </h1>
-            <h2 className="md:text-3xl text-2xl font-poppins text-red-400 md:mt-4 mt-2 text-center">
-              Software and AI Developer
+            <h2 className="md:text-2xl text-xl font-thickPoppins text-transparent bg-clip-text bg-gradient-to-b from-[#E63E60] to-[#A32972] md:mt-4 mt-2 text-center capitalize tracking-[.25em]">
+              SOFTWARE & AI DEVELOPER
             </h2>
           </ParallaxLayer>
           <div
             // factor={2.4}
             className="flex justify-center items-center flex-col md:mt-[48em] mt-[35em]"
           >
-            <div className="flex lg:mr-auto lg:ml-32 items-center space-x-2 justify-start mb-4">
+            <div className="flex lg:mr-auto lg:ml-32 items-center space-x-6 justify-start mb-4" id="#projects">
               <Image src={Triangle} alt="triangle" width={15} height={15} />
-              <h1 className="md:text-5xl text-4xl font-Poppins text-[#D9FDFE]">
-                EXPERIENCE
+              <h1 className="md:text-4xl text-3xl font-thickPoppins tracking-[.25em] text-[#D9FDFE]">
+                PROJECTS
               </h1>
             </div>
             <div className="flex flex-col items-center justify-center space-y-10">

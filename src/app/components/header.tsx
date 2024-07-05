@@ -1,11 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Logo from "@/../public/logo.svg";
 import Image from "next/image";
+import Link from "next/link";
+
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hash, setHash] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    setHash(window.location.hash);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -16,35 +23,72 @@ const Header: React.FC = () => {
       <div className="container mx-auto flex justify-between py-2 px-10 backdrop-blur-md bg-[#1D2D49]/40 rounded-[3rem] items-center">
         <nav className="hidden md:flex w-full justify-between items-center">
           <div className="flex space-x-24">
-            <a
-              href="#about"
-              className="font-poppins text-2xl hover:text-red-500"
+            <Link
+              href="#projects"
+              scroll={false}
+              className={`font-thickPoppins text-2xl hover:text-3xl transition-all ease-in-out duration-200 ${
+                hash == "#projects"
+                  ? "text-transparent bg-clip-text bg-gradient-to-b from-[#FA8578] to-[#DB5366]"
+                  : "text-white/80"
+              }`}
+              onClick={() => {
+                setHash("#projects");
+              }}
             >
-              About
-            </a>
-            <a
-              href="#skills"
-              className="hover:text-red-500 font-poppins text-2xl"
+              PROJECTS
+            </Link>
+            <Link
+              href="#resume"
+              onClick={() => {
+                setHash("#resume");
+              }}
+              className={`font-thickPoppins text-2xl hover:text-3xl transition-all ease-in-out duration-200 ${
+                hash == "#resume"
+                  ? "text-transparent bg-clip-text bg-gradient-to-b from-[#FA8578] to-[#DB5366]"
+                  : "text-white/80"
+              }`}
             >
-              Skills
-            </a>
+              RÉSUMÉ
+            </Link>
           </div>
 
-          <Image src={Logo} alt="Logo" width={50} height={50} />
+          <Link href="/" onClick={() => setHash("")}>
+            <Image
+              src={Logo}
+              alt="Logo"
+              width={50}
+              height={50}
+              className={`hover:scale-125 cursor-pointer transition-all ease-in-out duration-200`}
+            />
+          </Link>
 
           <div className="flex space-x-24">
-            <a
-              href="#projects"
-              className="hover:text-red-500 font-poppins text-2xl"
+            <Link
+              href="#skills"
+              className={`font-thickPoppins text-2xl hover:text-3xl transition-all ease-in-out duration-200 ${
+                hash == "#skills"
+                  ? "text-transparent bg-clip-text bg-gradient-to-b from-[#FA8578] to-[#DB5366]"
+                  : "text-white/80"
+              }`}
+              onClick={() => {
+                setHash("#skills");
+              }}
             >
-              Projects
-            </a>
-            <a
+              SKILLS
+            </Link>
+            <Link
               href="#contact"
-              className="hover:text-red-500 font-poppins text-2xl"
+              className={`font-thickPoppins text-2xl hover:text-3xl transition-all ease-in-out duration-200 ${
+                hash == "#contact"
+                  ? "text-transparent bg-clip-text bg-gradient-to-b from-[#FA8578] to-[#DB5366]"
+                  : "text-white/80"
+              }`}
+              onClick={() => {
+                setHash("#contact");
+              }}
             >
-              Contact
-            </a>
+              CONTACT
+            </Link>
           </div>
         </nav>
         <div className="md:hidden">
@@ -62,18 +106,42 @@ const Header: React.FC = () => {
       </div>
       {isOpen && (
         <nav className="md:hidden mt-4">
-          <a href="#about" className="block py-2">
+          <Link
+            href="#about"
+            className="block py-2"
+            onClick={() => {
+              setHash("#about");
+            }}
+          >
             About
-          </a>
-          <a href="#skills" className="block py-2">
+          </Link>
+          <Link
+            href="#skills"
+            className="block py-2"
+            onClick={() => {
+              setHash("#skills");
+            }}
+          >
             Skills
-          </a>
-          <a href="#projects" className="block py-2">
+          </Link>
+          <Link
+            href="#projects"
+            className="block py-2"
+            onClick={() => {
+              setHash("#projects");
+            }}
+          >
             Projects
-          </a>
-          <a href="#contact" className="block py-2">
+          </Link>
+          <Link
+            href="#contact"
+            className="block py-2"
+            onClick={() => {
+              setHash("#contact");
+            }}
+          >
             Contact
-          </a>
+          </Link>
         </nav>
       )}
     </header>

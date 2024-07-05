@@ -3,7 +3,9 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./components/Providers";
 import Header from "./components/header";
-const poppins = Poppins({ weight: "400", subsets: ["latin"] });
+
+const poppins = Poppins({ weight: "400", subsets: ["latin"], display: "swap", variable: "--font-poppins" });
+const thickPoppins = Poppins({ weight: "600", subsets: ["latin"], display: "swap", variable: "--font-thickPoppins" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${poppins.variable} ${thickPoppins.variable}`}>
       <head>
         <style>
           {`
