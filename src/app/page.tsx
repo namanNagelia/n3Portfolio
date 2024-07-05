@@ -134,19 +134,13 @@ export default function Home() {
               zIndex: 0,
             }}
           >
-            <div
-              className="w-full sm:w-[85%] h-full"
-              onTouchMove={(e) => e.stopPropagation()}
-            >
-              <div className="fixed top-0 left-0 w-screen h-screen z-20"></div>
-              <Canvas className="-z-10">
+            <div className="w-full sm:w-[85%] h-full">
+              {isWide2 && (
+                <div className="fixed top-0 left-0 w-screen h-screen z-20"></div>
+              )}
+              <Canvas className="">
                 <Suspense fallback={null}>
-                  <OrbitControls
-                    enableZoom={false}
-                    autoRotate
-                    enableRotate={!isWide2}
-                  />
-
+                  <OrbitControls enableZoom={false} autoRotate />
                   <HeroPlanet />
                 </Suspense>
               </Canvas>
@@ -154,13 +148,14 @@ export default function Home() {
           </ParallaxLayer>
           <ParallaxLayer
             speed={0.5}
-            offset={0.3}
+            offset={0.7}
             style={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
               flexDirection: "column",
               zIndex: 1,
+              height: "auto",
               position: "relative",
             }}
           >
@@ -173,7 +168,7 @@ export default function Home() {
           </ParallaxLayer>
           <div
             // factor={2.4}
-            className="flex justify-center items-center flex-col -mt-9"
+            className="flex justify-center items-center flex-col md:mt-[48em] mt-[35em]"
           >
             <div className="flex lg:mr-auto lg:ml-32 items-center space-x-2 justify-start mb-4">
               <Image src={Triangle} alt="triangle" width={15} height={15} />
