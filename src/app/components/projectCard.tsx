@@ -8,6 +8,9 @@ import FlaskLogo from "@/../public/stackIcons/flask.svg";
 import hyperLedgerLogo from "@/../public/stackIcons/hyperledger.svg";
 import mySQL from "@/../public/stackIcons/mysql.svg";
 import fastApi from "@/../public/stackIcons/fastApi.svg";
+import OpenAI from "@/../public/stackIcons/openAI.svg";
+import SocketIO from "@/../public/stackIcons/socketIO.png";
+import Firebase from "@/../public/stackIcons/firebase.png";
 
 interface Props {
   title: string;
@@ -39,6 +42,9 @@ const ProjectCard: React.FC<Props> = ({
     HyperLedger: hyperLedgerLogo,
     MySQL: mySQL,
     FastApi: fastApi,
+    OpenAI: OpenAI,
+    SocketIO: SocketIO,
+    Firebase: Firebase,
   };
   return (
     <div className="default-glass rounded-md p-5 w-[80%] lg:w-[60%] h-auto text-center">

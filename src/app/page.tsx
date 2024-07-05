@@ -51,7 +51,7 @@ export default function Home() {
   const AmazonProjectKuiper = {
     title: "Amazon Project Kuiper",
     description:
-      "Full Stack Website and Mobile App I am developing for Next Gen Basketball Statistics. Using an NBA API, I get data and display live stats, advanced stats, and allow players to be compared to each other with percentile, shot charts, and overall computed ratings. Betting Odds and Mobile App are in Development!",
+      "In a collaboration with the University of Maryland's App Dev Club, we designed a low Earth orbit satellite visualization system. This was designed for Project Kuiper as a way to visualize satellite collision risk to non-technical stakeholders at Amazon, and use game theory and hyperledger frameworks to help operators choose the best path to take in case of a collision.",
     technologies: [
       "React.js",
       "Next.js",
@@ -62,6 +62,24 @@ export default function Home() {
     ],
     image: [backboardStats1],
     link: "https://appdevclub.com/#/project/664d1cf1a7335496d2546586",
+    github: "https://github.com/example",
+    demo: "https://example.com/demo",
+    isMobile: false,
+  };
+  const SparkMySport = {
+    title: "Spark My Sport",
+    description:
+      "Designed the entire website and web app for spark my sport, a sports analytics startup aimed at allowing grassroots athletes get their stats visualized and recognized by scouts. Used OpenAI to make AI driven insights, alongside live stats, streaming, and graphs. ",
+    technologies: [
+      "React.js",
+      "Next.js",
+      "MySQL",
+      "OpenAI",
+      "SocketIO",
+      "Firebase",
+    ],
+    image: [backboardStats1],
+    link: "https://sparkmysport.com/",
     github: "https://github.com/example",
     demo: "https://example.com/demo",
     isMobile: false,
@@ -138,11 +156,11 @@ export default function Home() {
               EXPERIENCE
             </h1>
           </div>
-          <div className="flex flex-col items-center justify-center space-y-10">
-            {/* Place ProjectCard component here */}
-            <ProjectCard {...BackBoardStats} />
-            <ProjectCard {...AmazonProjectKuiper} />
-          </div>
+          {/* Place ProjectCard component here */}
+          <ProjectCard {...AmazonProjectKuiper} />
+          <ProjectCard {...SparkMySport} />
+
+          <ProjectCard {...BackBoardStats} />
         </ParallaxLayer>
       </Parallax>
     </div>
