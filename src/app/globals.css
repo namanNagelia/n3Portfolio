@@ -26,6 +26,12 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+@supports (-webkit-touch-callout: none) {
+  .parallax-container {
+    height: -webkit-fill-available;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

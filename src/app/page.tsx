@@ -1,7 +1,7 @@
 "use client";
 // pages/index.js
 import Image from "next/image";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Background from "./components/Background";
 import { Canvas } from "@react-three/fiber";
 import PlanetOne from "./components/PlanetOne";
@@ -12,6 +12,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import HeroImage from "../../public/HeroImage.png";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import { Parallax as OtherParallax } from "react-scroll-parallax";
 import ProjectCard from "./components/projectCard";
 import Triangle from "@/../public/triangle.svg";
 import backboardStats1 from "@/../public/backboardStats/backboardStats1.png";
@@ -47,7 +48,8 @@ const HeroPlanet = () => {
 };
 
 export default function Home() {
-  console.log(window.innerWidth);
+  const isWide2 = useMedia("(max-width: 820px)");
+
   const AmazonProjectKuiper = {
     title: "Amazon Project Kuiper",
     description:
@@ -97,10 +99,12 @@ export default function Home() {
   };
 
   return (
-    <div style={{ height: "100vh", width: "100vw" }}>
+    <div className="w-screen h-full">
       <Background />
 
-      <Parallax pages={3} style={{ top: 0 }}>
+
+      {/* as you add more projects, increment the pages to increase the page height */}
+      <Parallax pages={5} style={{ top: 0 }}>
         <ParallaxLayer
           speed={0.2}
           offset={0}
@@ -112,17 +116,25 @@ export default function Home() {
             zIndex: 0,
           }}
         >
-          <div className="w-full sm:w-[85%] h-full">
-            <Canvas>
+          <div
+            className="w-full sm:w-[85%] h-full"
+            onTouchMove={(e) => e.stopPropagation()}
+          >
+            <div className="fixed top-0 left-0 w-screen h-screen z-40"></div>
+            <Canvas className="-z-10">
               <Suspense fallback={null}>
-                <OrbitControls enableZoom={false} autoRotate />
+                <OrbitControls
+                  enableZoom={false}
+                  autoRotate
+                  enableRotate={!isWide2}
+                />
                 <HeroPlanet />
               </Suspense>
             </Canvas>
           </div>
         </ParallaxLayer>
         <ParallaxLayer
-          speed={0.75}
+          speed={0.5}
           offset={0.3}
           style={{
             display: "flex",
@@ -130,6 +142,7 @@ export default function Home() {
             alignItems: "center",
             flexDirection: "column",
             zIndex: 1,
+            position: "relative",
           }}
         >
           <h1 className="md:text-6xl text-5xl font-georgia text-white text-center">
@@ -139,29 +152,22 @@ export default function Home() {
             Software and AI Developer
           </h2>
         </ParallaxLayer>
-        <ParallaxLayer
-          speed={0.2}
-          offset={1}
-          factor={1.4}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
+        <div
+          // factor={2.4}
+          className="flex justify-center items-center flex-col -mt-9"
         >
-          <div className="flex lg:mr-auto lg:ml-32 items-center space-x-2 justify-start mb-4 mt-28">
+          <div className="flex lg:mr-auto lg:ml-32 items-center space-x-2 justify-start mb-4">
             <Image src={Triangle} alt="triangle" width={15} height={15} />
             <h1 className="md:text-5xl text-4xl font-Poppins text-[#D9FDFE]">
               EXPERIENCE
             </h1>
           </div>
-          {/* Place ProjectCard component here */}
-          <ProjectCard {...AmazonProjectKuiper} />
-          <ProjectCard {...SparkMySport} />
-
-          <ProjectCard {...BackBoardStats} />
-        </ParallaxLayer>
+          <div className="flex flex-col items-center justify-center space-y-10">
+            <ProjectCard {...AmazonProjectKuiper} />
+            <ProjectCard {...AmazonProjectKuiper} />
+            <ProjectCard {...AmazonProjectKuiper} />
+          </div>
+        </div>
       </Parallax>
     </div>
   );
