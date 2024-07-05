@@ -13,7 +13,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="text-white p-8 w-full fixed top-0 left-0 z-50">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto flex justify-between py-2 px-10 backdrop-blur-md bg-[#1D2D49]/40 rounded-[3rem] items-center">
         <nav className="hidden md:flex w-full justify-between items-center">
           <div className="flex space-x-24">
             <a
