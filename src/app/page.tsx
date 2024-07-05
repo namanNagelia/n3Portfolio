@@ -47,6 +47,7 @@ const HeroPlanet = () => {
 };
 
 export default function Home() {
+  console.log(window.innerWidth);
   const AmazonProjectKuiper = {
     title: "Amazon Project Kuiper",
     description:
@@ -113,16 +114,17 @@ export default function Home() {
             zIndex: 1,
           }}
         >
-          <h1 className="text-6xl font-georgia text-white text-center">
+          <h1 className="md:text-6xl text-5xl font-georgia text-white text-center">
             Naman Nagelia
           </h1>
-          <h2 className="text-3xl font-poppins text-red-400 mt-4 text-center">
+          <h2 className="md:text-3xl text-2xl font-poppins text-red-400 md:mt-4 mt-2 text-center">
             Software and AI Developer
           </h2>
         </ParallaxLayer>
         <ParallaxLayer
           speed={0.2}
           offset={1}
+          factor={1.4}
           style={{
             display: "flex",
             justifyContent: "center",
@@ -132,14 +134,15 @@ export default function Home() {
         >
           <div className="flex lg:mr-auto lg:ml-32 items-center space-x-2 justify-start mb-4 mt-28">
             <Image src={Triangle} alt="triangle" width={15} height={15} />
-            <h1 className="text-5xl font-Poppins text-[#D9FDFE]">
-              PROJECTS/EXPERIENCE
+            <h1 className="md:text-5xl text-4xl font-Poppins text-[#D9FDFE]">
+              EXPERIENCE
             </h1>
           </div>
-          {/* Place ProjectCard component here */}
-          <ProjectCard {...AmazonProjectKuiper} />
-
-          <ProjectCard {...BackBoardStats} />
+          <div className="flex flex-col items-center justify-center space-y-10">
+            {/* Place ProjectCard component here */}
+            <ProjectCard {...BackBoardStats} />
+            <ProjectCard {...AmazonProjectKuiper} />
+          </div>
         </ParallaxLayer>
       </Parallax>
     </div>
