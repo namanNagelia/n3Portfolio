@@ -26,7 +26,13 @@ const ProjectCard: React.FC<Props> = ({
     <div className="default-glass rounded-md p-5 w-[80%] lg:w-[60%] h-auto text-center">
       <h3 className="font-georgia font-bold text-3xl">{title}</h3>
       <div className="flex flex-col items-center mb-3">
-        <Image src={image} alt={title} width={900} height={900} />
+        <Image
+          src={image}
+          alt={title}
+          width={900}
+          height={900}
+          className="rounded-2xl"
+        />
       </div>
       <p>{description}</p>
       <div>
