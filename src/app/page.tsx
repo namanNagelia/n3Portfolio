@@ -15,6 +15,7 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import ProjectCard from "./components/projectCard";
 import Triangle from "@/../public/triangle.svg";
 import backboardStats1 from "@/../public/backboardStats/backboardStats1.png";
+import { useMedia } from "react-use";
 
 const Model = () => {
   const gltf = useLoader(GLTFLoader, "./PlanetOne.gltf");
@@ -29,13 +30,18 @@ const Model = () => {
 };
 
 const HeroPlanet = () => {
+  const isWide = useMedia("(max-width: 955px)");
+  const isWide2 = useMedia("(max-width: 820px)");
   const gltf = useLoader(GLTFLoader, "./HeroPlanet.gltf");
   // const colorMap = useLoader(TextureLoader, "finaltexture.png");
 
   return (
     <>
       <ambientLight intensity={10} />
-      <primitive object={gltf.scene} scale={1.7} />
+      <primitive
+        object={gltf.scene}
+        scale={!isWide ? 1.7 : !isWide2 ? 1.5 : 1.3}
+      />
     </>
   );
 };
@@ -87,7 +93,7 @@ export default function Home() {
             zIndex: 0,
           }}
         >
-          <div className="w-[75%] h-full">
+          <div className="w-full sm:w-[85%] h-full">
             <Canvas>
               <Suspense fallback={null}>
                 <OrbitControls enableZoom={false} autoRotate />
@@ -124,7 +130,7 @@ export default function Home() {
             flexDirection: "column",
           }}
         >
-          <div className="flex items-center space-x-2 justify-start mb-4 mt-28">
+          <div className="flex lg:mr-auto lg:ml-32 items-center space-x-2 justify-start mb-4 mt-28">
             <Image src={Triangle} alt="triangle" width={15} height={15} />
             <h1 className="text-5xl font-Poppins text-[#D9FDFE]">
               PROJECTS/EXPERIENCE
