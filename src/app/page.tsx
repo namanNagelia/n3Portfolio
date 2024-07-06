@@ -41,11 +41,30 @@ const HeroPlanet = () => {
 };
 
 export default function Home() {
-  const exampleProject = {
+  const AmazonProjectKuiper = {
+    title: "Amazon Project Kuiper",
+    description:
+      "Full Stack Website and Mobile App I am developing for Next Gen Basketball Statistics. Using an NBA API, I get data and display live stats, advanced stats, and allow players to be compared to each other with percentile, shot charts, and overall computed ratings. Betting Odds and Mobile App are in Development!",
+    technologies: [
+      "React.js",
+      "Next.js",
+      "Python",
+      "Supabase",
+      "HyperLedger",
+      "FastApi",
+    ],
+    image: [backboardStats1],
+    link: "https://appdevclub.com/#/project/664d1cf1a7335496d2546586",
+    github: "https://github.com/example",
+    demo: "https://example.com/demo",
+    isMobile: false,
+  };
+  const BackBoardStats = {
     title: "Backboard Stats",
-    description: "This is an example project description.",
-    technologies: ["React", "Next.js", "TypeScript"],
-    image: backboardStats1,
+    description:
+      "Full Stack Website and Mobile App I am developing for Next Gen Basketball Statistics. Using an NBA API, I get data and display live stats, advanced stats, and allow players to be compared to each other with percentile, shot charts, and overall computed ratings. Betting Odds and Mobile App are in Development!",
+    technologies: ["React.js", "Next.js", "Supabase", "Python", "Flask"],
+    image: [backboardStats1],
     link: "https://www.backboardstats.com/home",
     github: "https://github.com/example",
     demo: "https://example.com/demo",
@@ -88,8 +107,10 @@ export default function Home() {
             zIndex: 1,
           }}
         >
-          <h1 className="text-6xl font-georgia text-white">Naman Nagelia</h1>
-          <h2 className="text-3xl font-poppins text-red-400 mt-4">
+          <h1 className="text-6xl font-georgia text-white text-center">
+            Naman Nagelia
+          </h1>
+          <h2 className="text-3xl font-poppins text-red-400 mt-4 text-center">
             Software and AI Developer
           </h2>
         </ParallaxLayer>
@@ -101,15 +122,18 @@ export default function Home() {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            height: "16vh",
           }}
         >
           <div className="flex items-center space-x-2 justify-start mb-4 mt-28">
             <Image src={Triangle} alt="triangle" width={15} height={15} />
-            <h1 className="text-5xl font-Poppins text-[#D9FDFE]">PROJECTS</h1>
+            <h1 className="text-5xl font-Poppins text-[#D9FDFE]">
+              PROJECTS/EXPERIENCE
+            </h1>
           </div>
           {/* Place ProjectCard component here */}
-          <ProjectCard {...exampleProject} />
+          <ProjectCard {...AmazonProjectKuiper} />
+
+          <ProjectCard {...BackBoardStats} />
         </ParallaxLayer>
       </Parallax>
     </div>
