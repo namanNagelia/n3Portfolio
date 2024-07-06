@@ -16,7 +16,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <head>
+        <style>
+          {`
+            body { font-family: ${poppins.className}, sans-serif; }
+            h1, h2, h3 { font-family: Georgia, serif; }
+          `}
+        </style>
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

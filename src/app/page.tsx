@@ -13,6 +13,9 @@ import { TextureLoader } from "three/src/loaders/TextureLoader";
 import HeroImage from "../../public/HeroImage.png";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import ProjectCard from "./components/projectCard";
+import Triangle from "@/../public/triangle.svg";
+import backboardStats1 from "@/../public/backboardStats/backboardStats1.png";
+
 const Model = () => {
   const gltf = useLoader(GLTFLoader, "./PlanetOne.gltf");
   const colorMap = useLoader(TextureLoader, "finaltexture.png");
@@ -39,11 +42,11 @@ const HeroPlanet = () => {
 
 export default function Home() {
   const exampleProject = {
-    title: "Example Project",
+    title: "Backboard Stats",
     description: "This is an example project description.",
     technologies: ["React", "Next.js", "TypeScript"],
-    image: "/path/to/image.jpg", // Replace with the actual image path
-    link: "https://example.com",
+    image: backboardStats1,
+    link: "https://www.backboardstats.com/home",
     github: "https://github.com/example",
     demo: "https://example.com/demo",
     isMobile: false,
@@ -86,7 +89,7 @@ export default function Home() {
           }}
         >
           <h1 className="text-6xl font-georgia text-white">Naman Nagelia</h1>
-          <h2 className="text-3xl font-georgia text-white mt-4">
+          <h2 className="text-3xl font-poppins text-red-400 mt-4">
             Software and AI Developer
           </h2>
         </ParallaxLayer>
@@ -98,9 +101,13 @@ export default function Home() {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            height: "5vh",
+            height: "16vh",
           }}
         >
+          <div className="flex items-center space-x-2 justify-start mb-4 mt-28">
+            <Image src={Triangle} alt="triangle" width={15} height={15} />
+            <h1 className="text-5xl font-Poppins text-[#D9FDFE]">PROJECTS</h1>
+          </div>
           {/* Place ProjectCard component here */}
           <ProjectCard {...exampleProject} />
         </ParallaxLayer>
