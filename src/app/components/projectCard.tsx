@@ -4,7 +4,7 @@ import NextJs from "@/../public/stackIcons/next.png";
 import PythonImage from "@/../public/stackIcons/python.png";
 import reactJs from "@/../public/stackIcons/React.svg";
 import Supabase from "@/../public/stackIcons/Supabase.png";
-import FlaskLogo from "@/../public/stackIcons/flask.svg";
+import FlaskLogo from "@/../public/stackIcons/Flask.svg";
 import hyperLedgerLogo from "@/../public/stackIcons/hyperledger.svg";
 import mySQL from "@/../public/stackIcons/mysql.svg";
 import fastApi from "@/../public/stackIcons/fastApi.svg";
@@ -48,7 +48,9 @@ const ProjectCard: React.FC<Props> = ({
   };
   return (
     <div className="default-glass rounded-md p-5 w-[80%] lg:w-[60%] h-auto text-center">
-      <h3 className="font-georgia font-bold md:text-5xl text-3xl mb-4">{title}</h3>
+      <h3 className="font-georgia font-bold md:text-5xl text-3xl mb-4">
+        {title}
+      </h3>
       <div className="flex flex-col items-center mb-3">
         <Image
           src={image[0]}
