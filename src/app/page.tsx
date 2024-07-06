@@ -1,5 +1,6 @@
 "use client";
 // pages/index.js
+import Header from "./components/header";
 import Image from "next/image";
 import React, { Suspense } from "react";
 import Background from "./components/Background";
@@ -15,7 +16,16 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import ProjectCard from "./components/projectCard";
 import Triangle from "@/../public/triangle.svg";
 import backboardStats1 from "@/../public/backboardStats/backboardStats1.png";
+import backboardStats2 from "@/../public/backboardStats/bbs2.png";
+import backboardStats3 from "@/../public/backboardStats/bbs3.png";
+import backboardStats4 from "@/../public/backboardStats/bbs.png";
+import backboardStats5 from "@/../public/backboardStats/bbs5.png";
+
 import { useMedia } from "react-use";
+import sms1 from "@/../public/sparkmySport/AdminPage.png";
+import sms2 from "@/../public/sparkmySport/charts.png";
+import sms3 from "@/../public/sparkmySport/compare.png";
+import sms4 from "@/../public/sparkmySport/TeamPage.png";
 
 const Model = () => {
   const gltf = useLoader(GLTFLoader, "./PlanetOne.gltf");
@@ -77,7 +87,7 @@ export default function Home() {
       "SocketIO",
       "Firebase",
     ],
-    image: [backboardStats1],
+    image: [sms4, sms3, sms2, sms1],
     link: "https://sparkmysport.com/",
     github: "https://github.com/example",
     demo: "https://example.com/demo",
@@ -88,7 +98,13 @@ export default function Home() {
     description:
       "Full Stack Website and Mobile App I am developing for Next Gen Basketball Statistics. Using an NBA API, I get data and display live stats, advanced stats, and allow players to be compared to each other with percentile, shot charts, and overall computed ratings. Betting Odds and Mobile App are in Development!",
     technologies: ["React.js", "Next.js", "Supabase", "Python", "Flask"],
-    image: [backboardStats1],
+    image: [
+      backboardStats5,
+      backboardStats1,
+      backboardStats2,
+      backboardStats3,
+      backboardStats4,
+    ],
     link: "https://www.backboardstats.com/home",
     github: "https://github.com/example",
     demo: "https://example.com/demo",
