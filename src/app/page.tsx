@@ -115,76 +115,80 @@ export default function Home() {
   };
 
   return (
-    <div className="w-screen h-full">
-      <Background />
+    <>
+      <Header />
 
+      <div className="w-screen h-full">
+        <Background />
 
-      {/* as you add more projects, increment the pages to increase the page height */}
-      <Parallax pages={5} style={{ top: 0 }}>
-        <ParallaxLayer
-          speed={0.2}
-          offset={0}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            zIndex: 0,
-          }}
-        >
-          <div
-            className="w-full sm:w-[85%] h-full"
-            onTouchMove={(e) => e.stopPropagation()}
+        {/* as you add more projects, increment the pages to increase the page height */}
+        <Parallax pages={5} style={{ top: 0 }}>
+          <ParallaxLayer
+            speed={0.2}
+            offset={0}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+              zIndex: 0,
+            }}
           >
-            <div className="fixed top-0 left-0 w-screen h-screen z-40"></div>
-            <Canvas className="-z-10">
-              <Suspense fallback={null}>
-                <OrbitControls
-                  enableZoom={false}
-                  autoRotate
-                  enableRotate={!isWide2}
-                />
-                <HeroPlanet />
-              </Suspense>
-            </Canvas>
-          </div>
-        </ParallaxLayer>
-        <ParallaxLayer
-          speed={0.5}
-          offset={0.3}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            zIndex: 1,
-            position: "relative",
-          }}
-        >
-          <h1 className="md:text-6xl text-5xl font-georgia text-white text-center">
-            Naman Nagelia
-          </h1>
-          <h2 className="md:text-3xl text-2xl font-poppins text-red-400 md:mt-4 mt-2 text-center">
-            Software and AI Developer
-          </h2>
-        </ParallaxLayer>
-        <div
-          // factor={2.4}
-          className="flex justify-center items-center flex-col -mt-9"
-        >
-          <div className="flex lg:mr-auto lg:ml-32 items-center space-x-2 justify-start mb-4">
-            <Image src={Triangle} alt="triangle" width={15} height={15} />
-            <h1 className="md:text-5xl text-4xl font-Poppins text-[#D9FDFE]">
-              EXPERIENCE
+            <div
+              className="w-full sm:w-[85%] h-full"
+              onTouchMove={(e) => e.stopPropagation()}
+            >
+              <div className="fixed top-0 left-0 w-screen h-screen z-20"></div>
+              <Canvas className="-z-10">
+                <Suspense fallback={null}>
+                  <OrbitControls
+                    enableZoom={false}
+                    autoRotate
+                    enableRotate={!isWide2}
+                  />
+
+                  <HeroPlanet />
+                </Suspense>
+              </Canvas>
+            </div>
+          </ParallaxLayer>
+          <ParallaxLayer
+            speed={0.5}
+            offset={0.3}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+              zIndex: 1,
+              position: "relative",
+            }}
+          >
+            <h1 className="md:text-6xl text-5xl font-georgia text-white text-center">
+              Naman Nagelia
             </h1>
+            <h2 className="md:text-3xl text-2xl font-poppins text-red-400 md:mt-4 mt-2 text-center">
+              Software and AI Developer
+            </h2>
+          </ParallaxLayer>
+          <div
+            // factor={2.4}
+            className="flex justify-center items-center flex-col -mt-9"
+          >
+            <div className="flex lg:mr-auto lg:ml-32 items-center space-x-2 justify-start mb-4">
+              <Image src={Triangle} alt="triangle" width={15} height={15} />
+              <h1 className="md:text-5xl text-4xl font-Poppins text-[#D9FDFE]">
+                EXPERIENCE
+              </h1>
+            </div>
+            <div className="flex flex-col items-center justify-center space-y-10">
+              <ProjectCard {...AmazonProjectKuiper} />
+              <ProjectCard {...SparkMySport} />
+              <ProjectCard {...BackBoardStats} />
+            </div>
           </div>
-          <div className="flex flex-col items-center justify-center space-y-10">
-            <ProjectCard {...AmazonProjectKuiper} />
-            <ProjectCard {...AmazonProjectKuiper} />
-            <ProjectCard {...AmazonProjectKuiper} />
-          </div>
-        </div>
-      </Parallax>
-    </div>
+        </Parallax>
+      </div>
+    </>
   );
 }

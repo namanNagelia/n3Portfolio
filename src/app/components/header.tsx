@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Logo from "@/../public/logo.svg";
-
+import Image from "next/image";
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -12,22 +12,40 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-black text-white p-4 z-250">
+    <header className="text-white p-8 w-full fixed top-0 left-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
-        <img src={Logo} alt="Logo" className="h-10" />
-        <nav className="hidden md:flex space-x-6">
-          <a href="#about" className="hover:text-red-500">
-            About
-          </a>
-          <a href="#skills" className="hover:text-red-500">
-            Skills
-          </a>
-          <a href="#projects" className="hover:text-red-500">
-            Projects
-          </a>
-          <a href="#contact" className="hover:text-red-500">
-            Contact
-          </a>
+        <nav className="hidden md:flex w-full justify-between items-center">
+          <div className="flex space-x-24">
+            <a
+              href="#about"
+              className="font-poppins text-2xl hover:text-red-500"
+            >
+              About
+            </a>
+            <a
+              href="#skills"
+              className="hover:text-red-500 font-poppins text-2xl"
+            >
+              Skills
+            </a>
+          </div>
+
+          <Image src={Logo} alt="Logo" width={50} height={50} />
+
+          <div className="flex space-x-24">
+            <a
+              href="#projects"
+              className="hover:text-red-500 font-poppins text-2xl"
+            >
+              Projects
+            </a>
+            <a
+              href="#contact"
+              className="hover:text-red-500 font-poppins text-2xl"
+            >
+              Contact
+            </a>
+          </div>
         </nav>
         <div className="md:hidden">
           <button

@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Stars, useTexture } from "@react-three/drei";
 import * as THREE from "three";
+import Header from "./header";
 
 function GradientBackground() {
   const backgroundRef = useRef<THREE.Mesh>(null);
@@ -197,17 +198,20 @@ function AnimatedStars() {
 
 export default function Background() {
   return (
-    <Canvas
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100vw",
-        height: "100vh",
-      }}
-    >
-      <GradientBackground />
-      <AnimatedStars />
-    </Canvas>
+    <>
+      <Canvas
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          zIndex: -1,
+        }}
+      >
+        <GradientBackground />
+        <AnimatedStars />
+      </Canvas>
+    </>
   );
 }
