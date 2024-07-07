@@ -21,7 +21,7 @@ import backboardStats2 from "@/../public/backboardStats/bbs2.png";
 import backboardStats3 from "@/../public/backboardStats/bbs3.png";
 import backboardStats4 from "@/../public/backboardStats/bbs.png";
 import backboardStats5 from "@/../public/backboardStats/bbs5.png";
-
+import "./page.css";
 import { useMedia } from "react-use";
 import sms1 from "@/../public/sparkmySport/AdminPage.png";
 import sms2 from "@/../public/sparkmySport/charts.png";
@@ -174,17 +174,26 @@ export default function Home() {
             // factor={2.4}
             className="flex justify-center items-center flex-col md:mt-[48em] mt-[35em]"
           >
-            <div className="flex lg:mr-auto lg:ml-32 items-center space-x-6 justify-start mb-4" id="#projects">
+            <div
+              className="flex lg:mr-auto lg:ml-32 items-center space-x-6 justify-start mb-4"
+              id="#projects"
+            >
               <Image src={Triangle} alt="triangle" width={15} height={15} />
-              <h1 className="md:text-4xl text-3xl font-thickPoppins tracking-[.25em] text-[#D9FDFE]">
+              <h1 className="md:text-4xl text-3xl font-thickPoppins tracking-[.25em] text-[#D9FDFE] mb-2">
                 PROJECTS
               </h1>
             </div>
-            <div className="flex flex-col items-center justify-center space-y-10">
-              <ProjectCard {...AmazonProjectKuiper} />
-              <ProjectCard {...SparkMySport} />
-              <ProjectCard {...BackBoardStats} />
-            </div>
+            <div className="project-grid">
+              <div className="project-card-wrapper float-animation-slow">
+                <ProjectCard {...AmazonProjectKuiper} />
+              </div>
+              <div className="project-card-wrapper float-animation-medium">
+                <ProjectCard {...SparkMySport} />
+              </div>
+              <div className="project-card-wrapper float-animation-slow">
+                <ProjectCard {...BackBoardStats} />
+              </div>
+            </div>{" "}
           </div>
         </Parallax>
       </div>

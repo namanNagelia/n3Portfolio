@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import NextJs from "@/../public/stackIcons/next.png";
 import PythonImage from "@/../public/stackIcons/python.png";
@@ -11,6 +12,12 @@ import fastApi from "@/../public/stackIcons/fastApi.svg";
 import OpenAI from "@/../public/stackIcons/openAI.svg";
 import SocketIO from "@/../public/stackIcons/socketIO.png";
 import Firebase from "@/../public/stackIcons/firebase.png";
+import { motion, AnimatePresence } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   title: string;
@@ -46,19 +53,57 @@ const ProjectCard: React.FC<Props> = ({
     SocketIO: SocketIO,
     Firebase: Firebase,
   };
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === image.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? image.length - 1 : prevIndex - 1
+    );
+  };
+
   return (
-    <div className="default-glass rounded-md p-5 w-[80%] lg:w-[60%] h-auto text-center">
+    <div className="default-glass rounded-md p-5 w-[80%] lg:w-[85%] h-auto lg:h-[100%] text-center">
       <h3 className="font-georgia font-bold md:text-5xl text-3xl mb-4">
         {title}
       </h3>
-      <div className="flex flex-col items-center mb-3">
-        <Image
-          src={image[0]}
-          alt={title}
-          width={900}
-          height={900}
-          className="rounded-2xl"
-        />
+      <div className="relative mb-3 w-full aspect-video overflow-hidden">
+        <AnimatePresence initial={false} custom={currentImageIndex}>
+          <motion.div
+            key={currentImageIndex}
+            custom={currentImageIndex}
+            initial={{ opacity: 0, x: 300 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -300 }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={image[currentImageIndex]}
+              alt={`${title} - Image ${currentImageIndex + 1}`}
+              layout="fill"
+              objectFit="cover"
+              className="rounded-2xl"
+            />
+          </motion.div>
+        </AnimatePresence>
+        <button
+          onClick={prevImage}
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full z-10"
+        >
+          <FontAwesomeIcon icon={faChevronLeft} />
+        </button>
+        <button
+          onClick={nextImage}
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full z-10"
+        >
+          <FontAwesomeIcon icon={faChevronRight} />
+        </button>
       </div>
       <p className="text-lg font-poppins text-white mt-2">{description}</p>
       <div>
@@ -78,7 +123,7 @@ const ProjectCard: React.FC<Props> = ({
                 className="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
                 style={{ background: "rgba(0, 0, 0, 0.5)" }}
               >
-                <span className="text-white text-sm font-poppins">{tech}</span>
+                <span className="text-white text-xs font-poppins">{tech}</span>
               </div>
               <Image
                 src={techImages[tech]}
