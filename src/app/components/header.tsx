@@ -96,56 +96,71 @@ const Header: React.FC = () => {
             </Link>
           </div>
         </nav>
-        <div className="md:hidden">
+        <div className="md:hidden z-50">
           <button
             onClick={toggleMenu}
             className="text-white focus:outline-none"
           >
             {isOpen ? (
-              <FontAwesomeIcon icon={faTimes} className="h-6 w-6" />
+              <></>
             ) : (
-              <FontAwesomeIcon icon={faBars} className="h-6 w-6" />
+              <FontAwesomeIcon
+                icon={faBars}
+                className="h-6 w-6 z-60 relative"
+              />
             )}
           </button>
         </div>
       </div>
       {isOpen && (
-        <nav className="md:hidden mt-4">
+        <nav className="md:hidden fixed top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-[#1D2D49]/80 backdrop-blur-md z-50">
+          <div className="absolute top-0 left-0 p-8">
+            <FontAwesomeIcon
+              icon={faTimes}
+              className="h-6 w-6 z-60"
+              onClick={() => setIsOpen(false)}
+            />
+          </div>
+
           <Link
-            href="#about"
-            className="block py-2"
+            href="#projects"
+            className="block py-4 text-4xl font-thickPoppins text-white/80 hover:text-white transition-all duration-200"
             onClick={() => {
-              setHash("#about");
+              setHash("#projects");
+              setIsOpen(false);
             }}
           >
-            About
+            PROJECTS
+          </Link>
+          <Link
+            href="#resume"
+            className="block py-4 text-4xl font-thickPoppins text-white/80 hover:text-white transition-all duration-200"
+            onClick={() => {
+              setHash("#resume");
+              setIsOpen(false);
+            }}
+          >
+            RÉSUMÉ
           </Link>
           <Link
             href="#skills"
-            className="block py-2"
+            className="block py-4 text-4xl font-thickPoppins text-white/80 hover:text-white transition-all duration-200"
             onClick={() => {
               setHash("#skills");
+              setIsOpen(false);
             }}
           >
-            Skills
-          </Link>
-          <Link
-            href="#projects"
-            className="block py-2"
-            onClick={() => {
-              setHash("#projects");
-            }}
-          >
-            Projects
+            SKILLS
           </Link>
           <Link
             href="#contact"
-            className="block py-2"
+            className="block py-4 text-4xl font-thickPoppins text-white/80 hover:text-white transition-all duration-200"
             onClick={() => {
               setHash("#contact");
+              setIsOpen(false);
             }}
           >
-            Contact
+            CONTACT
           </Link>
         </nav>
       )}
