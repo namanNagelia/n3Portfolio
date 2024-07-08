@@ -27,6 +27,13 @@ import sms1 from "@/../public/sparkmySport/AdminPage.png";
 import sms2 from "@/../public/sparkmySport/charts.png";
 import sms3 from "@/../public/sparkmySport/compare.png";
 import sms4 from "@/../public/sparkmySport/TeamPage.png";
+import amazon1 from "@/../public/amazon/amazon1.png";
+
+//1. Get all projects in
+//2: Header navigation
+//3: Contact Form
+//4. Resume
+//5. Footer
 
 const Model = () => {
   const gltf = useLoader(GLTFLoader, "./PlanetOne.gltf");
@@ -72,7 +79,7 @@ export default function Home() {
       "HyperLedger",
       "FastApi",
     ],
-    image: [backboardStats1],
+    image: [amazon1],
     link: "https://appdevclub.com/#/project/664d1cf1a7335496d2546586",
     github: "https://github.com/example",
     demo: "https://example.com/demo",
