@@ -6,13 +6,36 @@ import Logo from "@/../public/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  projectsIntersecting: boolean;
+  resumeIntersecting: boolean;
+}
+
+const Header: React.FC<HeaderProps> = (props) => {
+  // console.log(activeSection);
   const [isOpen, setIsOpen] = useState(false);
   const [hash, setHash] = useState<string | undefined>(undefined);
+  const [active, setActive] = useState<string | undefined>("");
 
   useEffect(() => {
     setHash(window.location.hash);
   }, []);
+
+  useEffect(() => {
+    if (
+      (hash == "#projects" && props.projectsIntersecting) ||
+      props.projectsIntersecting
+    ) {
+      setActive("projects");
+    }
+
+    if (
+      (hash == "#resume" && props.resumeIntersecting) ||
+      props.resumeIntersecting
+    ) {
+      setActive("resume");
+    }
+  }, [hash, props.projectsIntersecting, props.resumeIntersecting]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -25,25 +48,36 @@ const Header: React.FC = () => {
           <div className="flex space-x-24">
             <Link
               href="#projects"
-              scroll={false}
               className={`font-thickPoppins text-2xl hover:text-3xl transition-all ease-in-out duration-200 ${
-                hash == "#projects"
+                active == "projects"
                   ? "text-transparent bg-clip-text bg-gradient-to-b from-[#FA8578] to-[#DB5366]"
                   : "text-white/80"
               }`}
+              scroll={false}
               onClick={() => {
                 setHash("#projects");
+
+                const element = document.getElementById("projects");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
               }}
             >
               PROJECTS
             </Link>
             <Link
               href="#resume"
+              scroll={false}
               onClick={() => {
                 setHash("#resume");
+
+                const element = document.getElementById("resume");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
               }}
               className={`font-thickPoppins text-2xl hover:text-3xl transition-all ease-in-out duration-200 ${
-                hash == "#resume"
+                active == "resume"
                   ? "text-transparent bg-clip-text bg-gradient-to-b from-[#FA8578] to-[#DB5366]"
                   : "text-white/80"
               }`}
@@ -52,7 +86,16 @@ const Header: React.FC = () => {
             </Link>
           </div>
 
-          <Link href="/" onClick={() => setHash("")}>
+          <Link
+            href="/"
+            onClick={() => {
+              setHash("");
+              const element = document.getElementById("home");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
             <Image
               src={Logo}
               alt="Logo"
@@ -63,8 +106,9 @@ const Header: React.FC = () => {
           </Link>
 
           <div className="flex space-x-24">
-            <Link
+            {/* <Link
               href="#skills"
+              scroll={false}
               className={`font-thickPoppins text-2xl hover:text-3xl transition-all ease-in-out duration-200 ${
                 hash == "#skills"
                   ? "text-transparent bg-clip-text bg-gradient-to-b from-[#FA8578] to-[#DB5366]"
@@ -75,9 +119,10 @@ const Header: React.FC = () => {
               }}
             >
               SKILLS
-            </Link>
+            </Link> */}
             <Link
               href="#contact"
+              scroll={false}
               className={`font-thickPoppins text-2xl hover:text-3xl transition-all ease-in-out duration-200 ${
                 hash == "#contact"
                   ? "text-transparent bg-clip-text bg-gradient-to-b from-[#FA8578] to-[#DB5366]"
@@ -85,6 +130,11 @@ const Header: React.FC = () => {
               }`}
               onClick={() => {
                 setHash("#contact");
+
+                const element = document.getElementById("contact");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
               }}
             >
               CONTACT
@@ -137,7 +187,7 @@ const Header: React.FC = () => {
           >
             RÉSUMÉ
           </Link>
-          <Link
+          {/* <Link
             href="#skills"
             className="block py-4 text-4xl font-thickPoppins text-white/80 hover:text-white transition-all duration-200"
             onClick={() => {
@@ -146,7 +196,7 @@ const Header: React.FC = () => {
             }}
           >
             SKILLS
-          </Link>
+          </Link> */}
           <Link
             href="#contact"
             className="block py-4 text-4xl font-thickPoppins text-white/80 hover:text-white transition-all duration-200"

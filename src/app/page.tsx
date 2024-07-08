@@ -2,7 +2,14 @@
 // pages/index.js
 import Header from "./components/header";
 import Image from "next/image";
-import React, { Suspense, useEffect, useState } from "react";
+import React, {
+  Suspense,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import Background from "./components/Background";
 import { Canvas } from "@react-three/fiber";
 import PlanetOne from "./components/PlanetOne";
@@ -27,6 +34,8 @@ import sms1 from "@/../public/sparkmySport/AdminPage.png";
 import sms2 from "@/../public/sparkmySport/charts.png";
 import sms3 from "@/../public/sparkmySport/compare.png";
 import sms4 from "@/../public/sparkmySport/TeamPage.png";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useActiveSection } from "./components/useActiveSection";
 import amazon1 from "@/../public/amazon/amazon1.png";
 
 //1. Get all projects in
@@ -66,6 +75,9 @@ const HeroPlanet = () => {
 
 export default function Home() {
   const isWide2 = useMedia("(max-width: 820px)");
+  const [isProjectIntersecting, setIsProjectIntersecting] = useState(false);
+  const [isResumeIntersecting, setIsResumeIntersecting] = useState(false);
+  const [element, setElement] = useState<HTMLDivElement | null>(null);
 
   const AmazonProjectKuiper = {
     title: "Amazon Project Kuiper",
@@ -121,13 +133,66 @@ export default function Home() {
     isMobile: false,
   };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
+  const projectRefCallback = useCallback((node: HTMLDivElement | null) => {
+    if (node !== null) {
+      console.log("Ref is set:", node);
+
+      const observer = new IntersectionObserver(([entry]) => {
+        console.log("Intersection:", entry);
+        setIsProjectIntersecting(entry.isIntersecting);
+      });
+
+      observer.observe(node);
+
+      return () => observer.disconnect();
+    }
   }, []);
+
+  const resumeRefCallback = useCallback((node: HTMLDivElement | null) => {
+    if (node !== null) {
+      console.log("Ref is set:", node);
+
+      const observer = new IntersectionObserver(([entry]) => {
+        console.log("Intersection:", entry);
+        setIsResumeIntersecting(entry.isIntersecting);
+      });
+
+      observer.observe(node);
+
+      return () => observer.disconnect();
+    }
+  }, []);
+
+  // useEffect(() => {
+  //   if (ref.current) {
+  //     setElement(ref.current);
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+
+  //   if (!element) return;
+
+  //   const observer = new IntersectionObserver(([entry]) => {
+  //     console.log(entry);
+  //     setIsIntersecting(entry.isIntersecting);
+  //   });
+
+  //   console.log(ref.current);
+
+  //   if (ref.current) {
+  //     observer.observe(ref.current);
+  //   }
+
+  //   return () => observer.disconnect();
+  // }, [element]);
 
   return (
     <>
-      <Header />
+      <Header
+        projectsIntersecting={isProjectIntersecting}
+        resumeIntersecting={isResumeIntersecting}
+      />
 
       <div className="w-screen h-full">
         <Background />
@@ -136,6 +201,7 @@ export default function Home() {
         <Parallax pages={5} style={{ top: 0 }}>
           <ParallaxLayer
             speed={0.2}
+            id="home"
             offset={0}
             style={{
               display: "flex",
@@ -183,14 +249,14 @@ export default function Home() {
           >
             <div
               className="flex lg:mr-auto lg:ml-32 items-center space-x-6 justify-start mb-4"
-              id="#projects"
+              id="projects"
             >
               <Image src={Triangle} alt="triangle" width={15} height={15} />
               <h1 className="md:text-4xl text-3xl font-thickPoppins tracking-[.25em] text-[#D9FDFE] mb-2">
                 PROJECTS
               </h1>
             </div>
-            <div className="project-grid">
+            <div className="project-grid" ref={projectRefCallback}>
               <div className="project-card-wrapper float-animation-slow">
                 <ProjectCard {...AmazonProjectKuiper} />
               </div>
@@ -201,6 +267,23 @@ export default function Home() {
                 <ProjectCard {...BackBoardStats} />
               </div>
             </div>{" "}
+          </div>
+          <div
+            // factor={2.4}
+            className="flex justify-center items-center flex-col md:mt-[48em] mt-[35em]"
+          >
+            <div
+              className="flex lg:mr-auto lg:ml-32 items-center space-x-6 justify-start mb-4"
+              id="resume"
+            >
+              <Image src={Triangle} alt="triangle" width={15} height={15} />
+              <h1
+                className="md:text-4xl text-3xl font-thickPoppins tracking-[.25em] text-[#D9FDFE] mb-2"
+                ref={resumeRefCallback}
+              >
+                RÉSUMÉ
+              </h1>
+            </div>
           </div>
         </Parallax>
       </div>
