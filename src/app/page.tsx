@@ -27,6 +27,7 @@ import sms1 from "@/../public/sparkmySport/AdminPage.png";
 import sms2 from "@/../public/sparkmySport/charts.png";
 import sms3 from "@/../public/sparkmySport/compare.png";
 import sms4 from "@/../public/sparkmySport/TeamPage.png";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Model = () => {
   const gltf = useLoader(GLTFLoader, "./PlanetOne.gltf");
@@ -59,6 +60,7 @@ const HeroPlanet = () => {
 
 export default function Home() {
   const isWide2 = useMedia("(max-width: 820px)");
+  const searchParams = useSearchParams();
 
   const AmazonProjectKuiper = {
     title: "Amazon Project Kuiper",
@@ -113,10 +115,6 @@ export default function Home() {
     demo: "https://example.com/demo",
     isMobile: false,
   };
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <>
@@ -174,7 +172,10 @@ export default function Home() {
             // factor={2.4}
             className="flex justify-center items-center flex-col md:mt-[48em] mt-[35em]"
           >
-            <div className="flex lg:mr-auto lg:ml-32 items-center space-x-6 justify-start mb-4" id="#projects">
+            <div
+              className="flex lg:mr-auto lg:ml-32 items-center space-x-6 justify-start mb-4"
+              id="projects"
+            >
               <Image src={Triangle} alt="triangle" width={15} height={15} />
               <h1 className="md:text-4xl text-3xl font-thickPoppins tracking-[.25em] text-[#D9FDFE]">
                 PROJECTS

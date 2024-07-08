@@ -25,14 +25,19 @@ const Header: React.FC = () => {
           <div className="flex space-x-24">
             <Link
               href="#projects"
-              scroll={false}
               className={`font-thickPoppins text-2xl hover:text-3xl transition-all ease-in-out duration-200 ${
                 hash == "#projects"
                   ? "text-transparent bg-clip-text bg-gradient-to-b from-[#FA8578] to-[#DB5366]"
                   : "text-white/80"
               }`}
+              scroll={false}
               onClick={() => {
                 setHash("#projects");
+
+                const element = document.getElementById("projects");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
               }}
             >
               PROJECTS
