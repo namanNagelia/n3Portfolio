@@ -40,6 +40,9 @@ import { useActiveSection } from "./components/useActiveSection";
 import amazon1 from "@/../public/amazon/amazon1.png";
 import Naman_Resume from "../../public/Naman_Nagelia_Resume.pdf";
 import Footer from "./components/footer";
+import T1 from "@/../public/tutorNova/Chat.png";
+import MobileProjectCard from "./components/mobileProjectCard";
+import T2 from "@/../public/tutorNova/Home.png";
 
 //1. Get all projects in
 //2: Header navigation
@@ -137,6 +140,17 @@ export default function Home() {
     github: "https://github.com/example",
     demo: "https://example.com/demo",
     isMobile: false,
+  };
+
+  const TutorNova = {
+    title: "TutorNova",
+    description:
+      "A mobile app I am developing for a tutoring company. It allows students to tutor other students, schedule sessions, and get paid. The app uses a Firebase backend, and is built using SwiftUI for IOS devices. Still under development!",
+    technologies: ["Swift", "Firebase", "Google Cloud"],
+    image: [T2, T1],
+    link: "",
+    github: "",
+    disabled: true,
   };
 
   const projectRefCallback = useCallback((node: HTMLDivElement | null) => {
@@ -317,6 +331,9 @@ export default function Home() {
               </div>
               <div className="project-card-wrapper float-animation-slow">
                 <ProjectCard {...BackBoardStats} />
+              </div>
+              <div className="project-card-wrapper float-animation-slow">
+                <MobileProjectCard {...TutorNova} />
               </div>
             </div>{" "}
           </div>

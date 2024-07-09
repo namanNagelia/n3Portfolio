@@ -34,7 +34,7 @@ interface Props {
   disabled?: boolean;
 }
 
-const ProjectCard: React.FC<Props> = ({
+const MobileProjectCard: React.FC<Props> = ({
   title,
   description,
   technologies,
@@ -79,7 +79,7 @@ const ProjectCard: React.FC<Props> = ({
       <h3 className="font-georgia font-bold md:text-5xl text-3xl mb-4">
         {title}
       </h3>
-      <div className="relative mb-3 w-full aspect-video overflow-hidden">
+      <div className="relative mb-3 w-full aspect-video overflow-hidden flex flex-col items-center">
         <AnimatePresence initial={false} custom={currentImageIndex}>
           <motion.div
             key={currentImageIndex}
@@ -90,13 +90,15 @@ const ProjectCard: React.FC<Props> = ({
             transition={{ duration: 0.5 }}
             className="absolute inset-0"
           >
-            <Image
-              src={image[currentImageIndex]}
-              alt={`${title} - Image ${currentImageIndex + 1}`}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-2xl"
-            />
+            <div className="flex justify-center items-center space-x-2">
+              <Image
+                src={image[currentImageIndex]}
+                alt={`${title} - Image ${currentImageIndex + 1}`}
+                width={270}
+                // objectFit="cover"
+                className="rounded-2xl"
+              />
+            </div>
           </motion.div>
         </AnimatePresence>
         {image.length > 1 && (
@@ -164,4 +166,4 @@ const ProjectCard: React.FC<Props> = ({
   );
 };
 
-export default ProjectCard;
+export default MobileProjectCard;

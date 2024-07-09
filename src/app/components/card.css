@@ -1,0 +1,8 @@
+.group:hover .rounded-2xl {
+  transform: scale(1.1);
+  z-index: 20;
+}
+
+.group:hover .bg-black {
+  opacity: 0.5;
+}
