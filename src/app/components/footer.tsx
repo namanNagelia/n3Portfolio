@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import Github from "@/../public/Github.svg";
@@ -14,13 +14,13 @@ export default function Footer() {
         <div className="text-sm text-white/80 font-thickPoppins">
           © 2024-2024 Naman Nagelia
         </div>
-          <Image
-            src={Logo}
-            alt="Logo"
-            width={40}
-            height={40}
-            className="hover:scale-125 cursor-pointer transition-all ease-in-out duration-200 hidden md:block"
-          />
+        <Image
+          src={Logo}
+          alt="Logo"
+          width={40}
+          height={40}
+          className="hover:scale-125 cursor-pointer transition-all ease-in-out duration-200 hidden md:block"
+        />
 
         <div className="flex space-x-6">
           <a

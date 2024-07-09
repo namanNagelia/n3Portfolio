@@ -79,6 +79,7 @@ const HeroPlanet = () => {
 export default function Home() {
   const isWide2 = useMedia("(max-width: 820px)");
   const isWide3 = useMedia("(max-width: 1440px)");
+  const isWide4 = useMedia("(max-width: 1660px)");
   const [isProjectIntersecting, setIsProjectIntersecting] = useState(false);
   const [isAboutIntersecting, setIsAboutIntersecting] = useState(false);
   const [isContactIntersecting, setIsContactIntersecting] = useState(false);
@@ -210,7 +211,10 @@ export default function Home() {
         <Background />
 
         {/* as you add more projects, increment the pages to increase the page height */}
-        <Parallax pages={isWide2 ? 7 : isWide3 ? 5.5 : 4.5} style={{ top: 0 }}>
+        <Parallax
+          pages={isWide2 ? 7 : isWide3 ? 5.5 : isWide4 ? 4.8 : 4.5}
+          style={{ top: 0 }}
+        >
           <ParallaxLayer
             speed={0.2}
             id="home"
@@ -333,7 +337,7 @@ export default function Home() {
                 CONTACT
               </h1>
             </div>
-            <div className="w-full">
+            <div className="w-full mb-8">
               <p className="font-thickPoppins text-center text-white text-lg md:text-3xl p-12 md:px-36">
                 Are you interested in collaborating on a project, learning more
                 about me, or have any other inquiries? Please, don't hesitate to
@@ -344,8 +348,8 @@ export default function Home() {
             </div>
           </div>
         </Parallax>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 }
