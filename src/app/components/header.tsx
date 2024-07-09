@@ -9,6 +9,7 @@ import Link from "next/link";
 interface HeaderProps {
   projectsIntersecting: boolean;
   resumeIntersecting: boolean;
+  contactIntersecting: boolean;
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
@@ -35,7 +36,19 @@ const Header: React.FC<HeaderProps> = (props) => {
     ) {
       setActive("resume");
     }
-  }, [hash, props.projectsIntersecting, props.resumeIntersecting]);
+
+    if (
+      (hash == "#contact" && props.contactIntersecting) ||
+      props.contactIntersecting
+    ) {
+      setActive("contact");
+    }
+  }, [
+    hash,
+    props.projectsIntersecting,
+    props.resumeIntersecting,
+    props.contactIntersecting,
+  ]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

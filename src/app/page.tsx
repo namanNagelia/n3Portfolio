@@ -11,6 +11,7 @@ import React, {
   useState,
 } from "react";
 import Background from "./components/Background";
+import ContactForm from "./contactus";
 import { Canvas } from "@react-three/fiber";
 import PlanetOne from "./components/PlanetOne";
 import Spline from "@splinetool/react-spline/next";
@@ -77,6 +78,7 @@ export default function Home() {
   const isWide2 = useMedia("(max-width: 820px)");
   const [isProjectIntersecting, setIsProjectIntersecting] = useState(false);
   const [isResumeIntersecting, setIsResumeIntersecting] = useState(false);
+  const [isContactIntersecting, setIsContactIntersecting] = useState(false);
   const [element, setElement] = useState<HTMLDivElement | null>(null);
 
   const AmazonProjectKuiper = {
@@ -135,10 +137,7 @@ export default function Home() {
 
   const projectRefCallback = useCallback((node: HTMLDivElement | null) => {
     if (node !== null) {
-      console.log("Ref is set:", node);
-
       const observer = new IntersectionObserver(([entry]) => {
-        console.log("Intersection:", entry);
         setIsProjectIntersecting(entry.isIntersecting);
       });
 
@@ -150,11 +149,20 @@ export default function Home() {
 
   const resumeRefCallback = useCallback((node: HTMLDivElement | null) => {
     if (node !== null) {
-      console.log("Ref is set:", node);
-
       const observer = new IntersectionObserver(([entry]) => {
-        console.log("Intersection:", entry);
         setIsResumeIntersecting(entry.isIntersecting);
+      });
+
+      observer.observe(node);
+
+      return () => observer.disconnect();
+    }
+  }, []);
+
+  const contactRefCallback = useCallback((node: HTMLDivElement | null) => {
+    if (node !== null) {
+      const observer = new IntersectionObserver(([entry]) => {
+        setIsContactIntersecting(entry.isIntersecting);
       });
 
       observer.observe(node);
@@ -192,6 +200,7 @@ export default function Home() {
       <Header
         projectsIntersecting={isProjectIntersecting}
         resumeIntersecting={isResumeIntersecting}
+        contactIntersecting={isContactIntersecting}
       />
 
       <div className="w-screen h-full">
@@ -270,7 +279,7 @@ export default function Home() {
           </div>
           <div
             // factor={2.4}
-            className="flex justify-center items-center flex-col md:mt-[48em] mt-[35em]"
+            className="flex justify-center items-center flex-col md:mt-[16em] mt-[10em]"
           >
             <div
               className="flex lg:mr-auto lg:ml-32 items-center space-x-6 justify-start mb-4"
@@ -285,6 +294,25 @@ export default function Home() {
               </h1>
             </div>
           </div>
+          <div
+            // factor={2.4}
+            className="flex justify-center items-center flex-col md:mt-[16em] mt-[10em]"
+          >
+            <div
+              className="flex lg:mr-auto lg:ml-32 items-center space-x-6 justify-start mb-4"
+              id="resume"
+            >
+              <Image src={Triangle} alt="triangle" width={15} height={15} />
+              <h1
+                className="md:text-4xl text-3xl font-thickPoppins tracking-[.25em] text-[#D9FDFE] mb-2"
+                ref={contactRefCallback}
+              >
+                Contact
+              </h1>
+            </div>
+          </div>
+
+          <ContactForm />
         </Parallax>
       </div>
     </>
