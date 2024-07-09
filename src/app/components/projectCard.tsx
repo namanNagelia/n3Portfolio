@@ -92,18 +92,22 @@ const ProjectCard: React.FC<Props> = ({
             />
           </motion.div>
         </AnimatePresence>
-        <button
-          onClick={prevImage}
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full z-10"
-        >
-          <FontAwesomeIcon icon={faChevronLeft} />
-        </button>
-        <button
-          onClick={nextImage}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full z-10"
-        >
-          <FontAwesomeIcon icon={faChevronRight} />
-        </button>
+        {image.length > 1 && (
+          <>
+            <button
+              onClick={prevImage}
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full z-10"
+            >
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full z-10"
+            >
+              <FontAwesomeIcon icon={faChevronRight} />
+            </button>
+          </>
+        )}
       </div>
       <p className="text-lg font-poppins text-white mt-2">{description}</p>
       <div>
