@@ -11,7 +11,7 @@ import React, {
   useState,
 } from "react";
 import Background from "./components/Background";
-import ContactForm from "./contactus";
+import ContactForm from "./components/contactus";
 import { Canvas } from "@react-three/fiber";
 import PlanetOne from "./components/PlanetOne";
 import Spline from "@splinetool/react-spline/next";
@@ -207,7 +207,7 @@ export default function Home() {
         <Background />
 
         {/* as you add more projects, increment the pages to increase the page height */}
-        <Parallax pages={5} style={{ top: 0 }}>
+        <Parallax pages={6} style={{ top: 0 }}>
           <ParallaxLayer
             speed={0.2}
             id="home"
@@ -265,7 +265,7 @@ export default function Home() {
                 PROJECTS
               </h1>
             </div>
-            <div className="project-grid" ref={projectRefCallback}>
+            <div className="project-grid" ref={!isWide2 ? projectRefCallback : null}>
               <div className="project-card-wrapper float-animation-slow">
                 <ProjectCard {...AmazonProjectKuiper} />
               </div>
@@ -288,7 +288,7 @@ export default function Home() {
               <Image src={Triangle} alt="triangle" width={15} height={15} />
               <h1
                 className="md:text-4xl text-3xl font-thickPoppins tracking-[.25em] text-[#D9FDFE] mb-2"
-                ref={aboutRefCallback}
+                ref={!isWide2 ? aboutRefCallback : null}
               >
                 ABOUT
               </h1>
@@ -305,14 +305,15 @@ export default function Home() {
               <Image src={Triangle} alt="triangle" width={15} height={15} />
               <h1
                 className="md:text-4xl text-3xl font-thickPoppins tracking-[.25em] text-[#D9FDFE] mb-2"
-                ref={contactRefCallback}
+                ref={!isWide2 ? contactRefCallback : null}
               >
                 CONTACT
               </h1>
             </div>
+            <div className="w-full">
+              <ContactForm />
+            </div>
           </div>
-
-          <ContactForm />
         </Parallax>
       </div>
     </>
