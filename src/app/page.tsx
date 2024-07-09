@@ -209,7 +209,7 @@ export default function Home() {
         <Background />
 
         {/* as you add more projects, increment the pages to increase the page height */}
-        <Parallax pages={7} style={{ top: 0 }}>
+        <Parallax pages={isWide2 ? 7 : 4.5} style={{ top: 0 }}>
           <ParallaxLayer
             speed={0.2}
             id="home"
