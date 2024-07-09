@@ -204,11 +204,11 @@ export default function Home() {
         contactIntersecting={isContactIntersecting}
       />
 
-      <div className="w-screen h-full">
+      <div className="w-screen h-screen">
         <Background />
 
         {/* as you add more projects, increment the pages to increase the page height */}
-        <Parallax pages={6} style={{ top: 0 }}>
+        <Parallax pages={7} style={{ top: 0 }}>
           <ParallaxLayer
             speed={0.2}
             id="home"

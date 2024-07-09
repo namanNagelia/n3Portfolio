@@ -176,26 +176,40 @@ const Header: React.FC<HeaderProps> = (props) => {
             <FontAwesomeIcon
               icon={faTimes}
               className="h-6 w-6 z-60"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+              }}
             />
           </div>
 
           <Link
             href="#about"
+            scroll={false}
             className="block py-4 text-4xl font-thickPoppins text-white/80 hover:text-white transition-all duration-200"
             onClick={() => {
               setHash("#about");
               setIsOpen(false);
+
+              const element = document.getElementById("about");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
             }}
           >
             ABOUT
           </Link>
           <Link
             href="#projects"
+            scroll={false}
             className="block py-4 text-4xl font-thickPoppins text-white/80 hover:text-white transition-all duration-200"
             onClick={() => {
               setHash("#projects");
               setIsOpen(false);
+
+              const element = document.getElementById("projects");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
             }}
           >
             PROJECTS
@@ -213,10 +227,16 @@ const Header: React.FC<HeaderProps> = (props) => {
           </Link> */}
           <Link
             href="#contact"
+            scroll={false}
             className="block py-4 text-4xl font-thickPoppins text-white/80 hover:text-white transition-all duration-200"
             onClick={() => {
               setHash("#contact");
               setIsOpen(false);
+
+              const element = document.getElementById("contact");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
             }}
           >
             CONTACT
