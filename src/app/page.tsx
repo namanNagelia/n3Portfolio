@@ -39,6 +39,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useActiveSection } from "./components/useActiveSection";
 import amazon1 from "@/../public/amazon/amazon1.png";
 import Naman_Resume from "../../public/Naman_Nagelia_Resume.pdf";
+import Footer from "./components/footer";
 
 //1. Get all projects in
 //2: Header navigation
@@ -343,6 +344,7 @@ export default function Home() {
           </div>
         </Parallax>
       </div>
+      <Footer />
     </>
   );
 }
