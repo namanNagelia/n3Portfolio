@@ -119,20 +119,12 @@ const Header: React.FC<HeaderProps> = (props) => {
           </Link>
 
           <div className="flex space-x-24">
-            {/* <Link
+            <Link
               href="#skills"
-              scroll={false}
-              className={`font-thickPoppins text-2xl hover:text-3xl transition-all ease-in-out duration-200 ${
-                hash == "#skills"
-                  ? "text-transparent bg-clip-text bg-gradient-to-b from-[#FA8578] to-[#DB5366]"
-                  : "text-white/80"
-              }`}
-              onClick={() => {
-                setHash("#skills");
-              }}
+              className="text-transparent fill-transparent"
             >
               SKILLS
-            </Link> */}
+            </Link>
             <Link
               href="#contact"
               scroll={false}
