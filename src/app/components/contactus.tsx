@@ -27,10 +27,9 @@ export default function Example() {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = () => {
     setSuccess("");
     setError("");
-    e.preventDefault();
     if (!email || !firstName || !message) {
       setError("Please fill all the fields");
     } else {
@@ -79,7 +78,7 @@ export default function Example() {
         />
       </div>
       <form
-        action="#"
+        action={handleSubmit}
         method="POST"
         className="lg:mx-32 lg:w-[50%] mx-auto w-full"
       >
@@ -146,7 +145,6 @@ export default function Example() {
           <button
             type="submit"
             className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            onClick={handleSubmit}
           >
             Let's talk
           </button>
