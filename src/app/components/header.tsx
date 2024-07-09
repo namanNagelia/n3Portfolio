@@ -60,25 +60,6 @@ const Header: React.FC<HeaderProps> = (props) => {
         <nav className="hidden md:flex w-full justify-between items-center">
           <div className="flex space-x-24">
             <Link
-              href="#projects"
-              className={`font-thickPoppins text-2xl hover:text-3xl transition-all ease-in-out duration-200 ${
-                active == "projects"
-                  ? "text-transparent bg-clip-text bg-gradient-to-b from-[#FA8578] to-[#DB5366]"
-                  : "text-white/80"
-              }`}
-              scroll={false}
-              onClick={() => {
-                setHash("#projects");
-
-                const element = document.getElementById("projects");
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth" });
-                }
-              }}
-            >
-              PROJECTS
-            </Link>
-            <Link
               href="#about"
               scroll={false}
               onClick={() => {
@@ -96,6 +77,25 @@ const Header: React.FC<HeaderProps> = (props) => {
               }`}
             >
               ABOUT
+            </Link>
+            <Link
+              href="#projects"
+              className={`font-thickPoppins text-2xl hover:text-3xl transition-all ease-in-out duration-200 ${
+                active == "projects"
+                  ? "text-transparent bg-clip-text bg-gradient-to-b from-[#FA8578] to-[#DB5366]"
+                  : "text-white/80"
+              }`}
+              scroll={false}
+              onClick={() => {
+                setHash("#projects");
+
+                const element = document.getElementById("projects");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
+              PROJECTS
             </Link>
           </div>
 
@@ -181,16 +181,6 @@ const Header: React.FC<HeaderProps> = (props) => {
           </div>
 
           <Link
-            href="#projects"
-            className="block py-4 text-4xl font-thickPoppins text-white/80 hover:text-white transition-all duration-200"
-            onClick={() => {
-              setHash("#projects");
-              setIsOpen(false);
-            }}
-          >
-            PROJECTS
-          </Link>
-          <Link
             href="#about"
             className="block py-4 text-4xl font-thickPoppins text-white/80 hover:text-white transition-all duration-200"
             onClick={() => {
@@ -200,6 +190,17 @@ const Header: React.FC<HeaderProps> = (props) => {
           >
             ABOUT
           </Link>
+          <Link
+            href="#projects"
+            className="block py-4 text-4xl font-thickPoppins text-white/80 hover:text-white transition-all duration-200"
+            onClick={() => {
+              setHash("#projects");
+              setIsOpen(false);
+            }}
+          >
+            PROJECTS
+          </Link>
+
           {/* <Link
             href="#skills"
             className="block py-4 text-4xl font-thickPoppins text-white/80 hover:text-white transition-all duration-200"

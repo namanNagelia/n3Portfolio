@@ -20,9 +20,52 @@ import { Field, Label, Switch } from "@headlessui/react";
 
 export default function Example() {
   const [agreed, setAgreed] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e: any) => {
+    setSuccess("");
+    setError("");
+    e.preventDefault();
+    if (!email || !firstName || !message) {
+      setError("Please fill all the fields");
+    } else {
+      setSubmitted(true);
+      setSuccess("Your message has been sent successfully");
+      fetch("/api/submitContact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: firstName, email, message }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+          setError("Something went wrong, please try again later");
+        });
+    }
+  };
+
+  const handleNameChange = (e: any) => {
+    setFirstName(e.target.value);
+  };
+  const handleEmailChange = (e: any) => {
+    setEmail(e.target.value);
+  };
+  const handleMessageChange = (e: any) => {
+    setMessage(e.target.value);
+  };
 
   return (
-    <div className="isolate px-6 py-10 lg:px-8">
+    <div className="isolate px-4 py-8 lg:px-8">
       <div
         aria-hidden="true"
         className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
@@ -51,6 +94,7 @@ export default function Example() {
             <div className="mt-2.5">
               <input
                 id="full-name"
+                onChange={handleNameChange}
                 name="full-name"
                 required
                 type="text"
@@ -69,6 +113,7 @@ export default function Example() {
             <div className="mt-2.5">
               <input
                 id="email"
+                onChange={handleEmailChange}
                 name="email"
                 required
                 type="email"
@@ -87,6 +132,7 @@ export default function Example() {
             <div className="mt-2.5">
               <textarea
                 id="message"
+                onChange={handleMessageChange}
                 name="message"
                 required
                 rows={4}
@@ -100,9 +146,20 @@ export default function Example() {
           <button
             type="submit"
             className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            onClick={handleSubmit}
           >
             Let's talk
           </button>
+          {submitted && success && (
+            <div className="mt-2 text-center bg-green-700 text-white p-2 rounded-2xl font-thickPoppins">
+              {success}
+            </div>
+          )}
+          {error && (
+            <div className="mt-2 text-center bg-red-800 text-white p-2 rounded-2xl font-thickPoppins">
+              {error}
+            </div>
+          )}
         </div>
       </form>
     </div>

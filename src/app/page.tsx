@@ -259,31 +259,6 @@ export default function Home() {
           >
             <div
               className="flex lg:mr-auto lg:ml-32 items-center space-x-6 justify-start mb-4"
-              id="projects"
-            >
-              <Image src={Triangle} alt="triangle" width={15} height={15} />
-              <h1 className="md:text-4xl text-3xl font-thickPoppins tracking-[.25em] text-[#D9FDFE] mb-2">
-                PROJECTS
-              </h1>
-            </div>
-            <div className="project-grid" ref={!isWide2 ? projectRefCallback : null}>
-              <div className="project-card-wrapper float-animation-slow">
-                <ProjectCard {...AmazonProjectKuiper} />
-              </div>
-              <div className="project-card-wrapper float-animation-medium">
-                <ProjectCard {...SparkMySport} />
-              </div>
-              <div className="project-card-wrapper float-animation-slow">
-                <ProjectCard {...BackBoardStats} />
-              </div>
-            </div>{" "}
-          </div>
-          <div
-            // factor={2.4}
-            className="flex justify-center items-center flex-col md:mt-[16em] mt-[10em]"
-          >
-            <div
-              className="flex lg:mr-auto lg:ml-32 items-center space-x-6 justify-start mb-4"
               id="about"
             >
               <Image src={Triangle} alt="triangle" width={15} height={15} />
@@ -310,6 +285,34 @@ export default function Home() {
             >
               Download my Resume
             </a>
+          </div>
+          <div
+            // factor={2.4}
+            className="flex justify-center items-center flex-col md:mt-[16em] mt-[10em] "
+          >
+            <div
+              className="flex lg:mr-auto lg:ml-32 items-center space-x-6 justify-start mb-4"
+              id="projects"
+            >
+              <Image src={Triangle} alt="triangle" width={15} height={15} />
+              <h1 className="md:text-4xl text-3xl font-thickPoppins tracking-[.25em] text-[#D9FDFE] mb-2">
+                PROJECTS
+              </h1>
+            </div>
+            <div
+              className="project-grid"
+              ref={!isWide2 ? projectRefCallback : null}
+            >
+              <div className="project-card-wrapper float-animation-slow">
+                <ProjectCard {...AmazonProjectKuiper} />
+              </div>
+              <div className="project-card-wrapper float-animation-medium">
+                <ProjectCard {...SparkMySport} />
+              </div>
+              <div className="project-card-wrapper float-animation-slow">
+                <ProjectCard {...BackBoardStats} />
+              </div>
+            </div>{" "}
           </div>
 
           <div
