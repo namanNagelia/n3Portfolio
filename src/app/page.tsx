@@ -332,6 +332,12 @@ export default function Home() {
               </h1>
             </div>
             <div className="w-full">
+              <p className="font-thickPoppins text-center text-white text-lg md:text-3xl p-12 md:px-36">
+                Are you interested in collaborating on a project, learning more
+                about me, or have any other inquiries? Please, don't hesitate to
+                contact me! 📩🤝
+              </p>
+
               <ContactForm />
             </div>
           </div>
