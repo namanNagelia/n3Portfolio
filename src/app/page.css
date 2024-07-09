@@ -29,3 +29,25 @@
     gap: 2.5rem;
   }
 }
+
+.download-resume-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #e63e60;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  border: 2px solid #e63e60;
+  text-align: center;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.download-resume-btn:hover {
+  background-color: transparent;
+  color: #e63e60;
+}

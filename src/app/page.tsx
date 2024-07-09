@@ -38,6 +38,7 @@ import sms4 from "@/../public/sparkmySport/TeamPage.png";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useActiveSection } from "./components/useActiveSection";
 import amazon1 from "@/../public/amazon/amazon1.png";
+import Naman_Resume from "../../public/Naman_Nagelia_Resume.pdf";
 
 //1. Get all projects in
 //2: Header navigation
@@ -294,6 +295,23 @@ export default function Home() {
               </h1>
             </div>
           </div>
+          <div className="items-center flex flex-col">
+            <p className="font-thickPoppins text-center text-white text-lg md:text-3xl p-12 md:px-36">
+              Hey! 👋 I am Naman Nagelia, a student at the University of
+              Maryland studying Computer Science, and Business Analytics. Im a
+              Software and AI/ML engineer looking to create innovative solutions
+              in fields I am passionate about. If you want to learn more, check
+              out my resume and projects!
+            </p>
+            <a
+              href="/Naman_Nagelia_Resume.pdf"
+              download="Naman_Nagelia_Resume.pdf"
+              className="items-center justify-center inline-block mt-6 px-6 py-3 bg-gradient-to-r from-[#E63E60] to-[#A32972] text-white font-thickPoppins text-lg rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E63E60]"
+            >
+              Download my Resume
+            </a>
+          </div>
+
           <div
             // factor={2.4}
             className="flex justify-center items-center flex-col md:mt-[16em] mt-[10em]"
