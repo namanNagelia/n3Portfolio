@@ -77,7 +77,7 @@ const HeroPlanet = () => {
 export default function Home() {
   const isWide2 = useMedia("(max-width: 820px)");
   const [isProjectIntersecting, setIsProjectIntersecting] = useState(false);
-  const [isResumeIntersecting, setIsResumeIntersecting] = useState(false);
+  const [isAboutIntersecting, setIsAboutIntersecting] = useState(false);
   const [isContactIntersecting, setIsContactIntersecting] = useState(false);
   const [element, setElement] = useState<HTMLDivElement | null>(null);
 
@@ -147,10 +147,10 @@ export default function Home() {
     }
   }, []);
 
-  const resumeRefCallback = useCallback((node: HTMLDivElement | null) => {
+  const aboutRefCallback = useCallback((node: HTMLDivElement | null) => {
     if (node !== null) {
       const observer = new IntersectionObserver(([entry]) => {
-        setIsResumeIntersecting(entry.isIntersecting);
+        setIsAboutIntersecting(entry.isIntersecting);
       });
 
       observer.observe(node);
@@ -199,7 +199,7 @@ export default function Home() {
     <>
       <Header
         projectsIntersecting={isProjectIntersecting}
-        resumeIntersecting={isResumeIntersecting}
+        aboutIntersecting={isAboutIntersecting}
         contactIntersecting={isContactIntersecting}
       />
 
@@ -283,14 +283,14 @@ export default function Home() {
           >
             <div
               className="flex lg:mr-auto lg:ml-32 items-center space-x-6 justify-start mb-4"
-              id="resume"
+              id="about"
             >
               <Image src={Triangle} alt="triangle" width={15} height={15} />
               <h1
                 className="md:text-4xl text-3xl font-thickPoppins tracking-[.25em] text-[#D9FDFE] mb-2"
-                ref={resumeRefCallback}
+                ref={aboutRefCallback}
               >
-                RÉSUMÉ
+                ABOUT
               </h1>
             </div>
           </div>
@@ -300,14 +300,14 @@ export default function Home() {
           >
             <div
               className="flex lg:mr-auto lg:ml-32 items-center space-x-6 justify-start mb-4"
-              id="resume"
+              id="contact"
             >
               <Image src={Triangle} alt="triangle" width={15} height={15} />
               <h1
                 className="md:text-4xl text-3xl font-thickPoppins tracking-[.25em] text-[#D9FDFE] mb-2"
                 ref={contactRefCallback}
               >
-                Contact
+                CONTACT
               </h1>
             </div>
           </div>

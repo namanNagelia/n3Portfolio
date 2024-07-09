@@ -8,7 +8,7 @@ import Link from "next/link";
 
 interface HeaderProps {
   projectsIntersecting: boolean;
-  resumeIntersecting: boolean;
+  aboutIntersecting: boolean;
   contactIntersecting: boolean;
 }
 
@@ -31,10 +31,10 @@ const Header: React.FC<HeaderProps> = (props) => {
     }
 
     if (
-      (hash == "#resume" && props.resumeIntersecting) ||
-      props.resumeIntersecting
+      (hash == "#about" && props.aboutIntersecting) ||
+      props.aboutIntersecting
     ) {
-      setActive("resume");
+      setActive("about");
     }
 
     if (
@@ -46,7 +46,7 @@ const Header: React.FC<HeaderProps> = (props) => {
   }, [
     hash,
     props.projectsIntersecting,
-    props.resumeIntersecting,
+    props.aboutIntersecting,
     props.contactIntersecting,
   ]);
 
@@ -79,23 +79,23 @@ const Header: React.FC<HeaderProps> = (props) => {
               PROJECTS
             </Link>
             <Link
-              href="#resume"
+              href="#about"
               scroll={false}
               onClick={() => {
-                setHash("#resume");
+                setHash("#about");
 
-                const element = document.getElementById("resume");
+                const element = document.getElementById("about");
                 if (element) {
                   element.scrollIntoView({ behavior: "smooth" });
                 }
               }}
               className={`font-thickPoppins text-2xl hover:text-3xl transition-all ease-in-out duration-200 ${
-                active == "resume"
+                active == "about"
                   ? "text-transparent bg-clip-text bg-gradient-to-b from-[#FA8578] to-[#DB5366]"
                   : "text-white/80"
               }`}
             >
-              RÉSUMÉ
+              ABOUT
             </Link>
           </div>
 
@@ -137,7 +137,7 @@ const Header: React.FC<HeaderProps> = (props) => {
               href="#contact"
               scroll={false}
               className={`font-thickPoppins text-2xl hover:text-3xl transition-all ease-in-out duration-200 ${
-                hash == "#contact"
+                active == "contact"
                   ? "text-transparent bg-clip-text bg-gradient-to-b from-[#FA8578] to-[#DB5366]"
                   : "text-white/80"
               }`}
@@ -191,14 +191,14 @@ const Header: React.FC<HeaderProps> = (props) => {
             PROJECTS
           </Link>
           <Link
-            href="#resume"
+            href="#about"
             className="block py-4 text-4xl font-thickPoppins text-white/80 hover:text-white transition-all duration-200"
             onClick={() => {
-              setHash("#resume");
+              setHash("#about");
               setIsOpen(false);
             }}
           >
-            RÉSUMÉ
+            ABOUT
           </Link>
           {/* <Link
             href="#skills"
