@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export const generateEmailContent = (data: {
+const generateEmailContent = (data: {
   name: string;
   email: string;
   message: string;
