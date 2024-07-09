@@ -144,7 +144,7 @@ export default function Example() {
         <div className="mt-10">
           <button
             type="submit"
-            className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="block w-full rounded-md bg-gradient-to-r from-[#E63E60] to-[#A32972] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:scale-105 active:scale-100 transition-all duration-300"
           >
             Let's talk
           </button>

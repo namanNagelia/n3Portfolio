@@ -271,9 +271,9 @@ export default function Home() {
             </div>
           </div>
           <div className="items-center flex flex-col">
-            <p className="font-thickPoppins text-center text-white text-lg md:text-3xl p-12 md:px-36">
+            <p className="font-poppins text-center text-white text-lg md:text-3xl p-12 md:px-36">
               Hey! 👋 I am Naman Nagelia, a student at the University of
-              Maryland studying Computer Science, and Business Analytics. Im a
+              Maryland studying Computer Science, and Business Analytics. I'm a
               Software and AI/ML engineer looking to create innovative solutions
               in fields I am passionate about. If you want to learn more, check
               out my resume and projects!
@@ -281,7 +281,7 @@ export default function Home() {
             <a
               href="/Naman_Nagelia_Resume.pdf"
               download="Naman_Nagelia_Resume.pdf"
-              className="items-center justify-center inline-block mt-6 px-6 py-3 bg-gradient-to-r from-[#E63E60] to-[#A32972] text-white font-thickPoppins text-lg rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E63E60]"
+              className="items-center justify-center inline-block mt-6 px-6 py-3 bg-gradient-to-r from-[#E63E60] to-[#A32972] text-white active:scale-95 font-thickPoppins text-lg rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
             >
               Download my Resume
             </a>
