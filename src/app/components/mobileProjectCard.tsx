@@ -94,7 +94,7 @@ const MobileProjectCard: React.FC<Props> = ({
               <Image
                 src={image[currentImageIndex]}
                 alt={`${title} - Image ${currentImageIndex + 1}`}
-                width={270}
+                width={190}
                 // objectFit="cover"
                 className="rounded-2xl"
               />
