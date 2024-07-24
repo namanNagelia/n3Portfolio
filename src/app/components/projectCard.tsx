@@ -18,7 +18,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-
+import PyTorch from "@/../public/stackIcons/PyTorch.svg";
 import Swift from "@/../public/stackIcons/Swift.svg";
 import GoogleCloud from "@/../public/stackIcons/googleCloud.png";
 
@@ -59,6 +59,7 @@ const ProjectCard: React.FC<Props> = ({
     Firebase: Firebase,
     Swift: Swift,
     "Google Cloud": GoogleCloud,
+    PyTorch: PyTorch,
   };
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 

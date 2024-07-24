@@ -44,6 +44,9 @@ import T1 from "@/../public/tutorNova/Chat.png";
 import MobileProjectCard from "./components/mobileProjectCard";
 import T2 from "@/../public/tutorNova/Home.png";
 
+import FinSims1 from "@/../public/finSims/RSI.png";
+import FinSims2 from "@/../public/finSims/Signals.png";
+
 //1. Get all projects in
 //2: Header navigation
 //3: Contact Form
@@ -123,6 +126,15 @@ export default function Home() {
     github: "https://github.com/example",
     demo: "https://example.com/demo",
     isMobile: false,
+  };
+
+  const FinSims = {
+    title: "Fin Sims",
+    description:
+      "An AI Stock Simulation. Currently, used a GRU and LSTM Pytorch Models to help predict and get trading signals, and coded my own method to get RSI",
+    technologies: ["Python", "PyTorch"],
+    image: [FinSims2, FinSims1],
+    link: "https://github.com/FinSims/financial-market",
   };
   const BackBoardStats = {
     title: "Backboard Stats",
@@ -326,6 +338,10 @@ export default function Home() {
               <div className="project-card-wrapper float-animation-slow">
                 <ProjectCard {...AmazonProjectKuiper} />
               </div>
+              <div className="project-card-wrapper float-animation-slow">
+                <ProjectCard {...FinSims} />
+              </div>
+
               <div className="project-card-wrapper float-animation-medium">
                 <ProjectCard {...SparkMySport} />
               </div>
