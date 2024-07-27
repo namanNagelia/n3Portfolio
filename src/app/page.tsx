@@ -238,7 +238,7 @@ export default function Home() {
 
         {/* as you add more projects, increment the pages to increase the page height */}
         <Parallax
-          pages={isWide2 ? 8 : isWide3 ? 6.5 : isWide4 ? 5.8 : 5.5}
+          pages={isWide2 ? 8 : isWide3 ? 6.5 : isWide4 ? 6 : 6}
           style={{ top: 0 }}
         >
           <ParallaxLayer
