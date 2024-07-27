@@ -32,7 +32,7 @@ export default function Footer() {
             <Image src={LinkedIn} alt="LinkedIn" width={24} height={24} />
           </a>
           <a
-            href="https://github.com/your-github-username" // Replace with your GitHub profile link
+            href="https://github.com/namanNagelia" // Replace with your GitHub profile link
             target="_blank"
             rel="noopener noreferrer"
             className="hover:scale-125 transition-all ease-in-out duration-200"
