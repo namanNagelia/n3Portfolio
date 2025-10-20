@@ -75,11 +75,11 @@ const MobileProjectCard: React.FC<Props> = ({
   };
 
   return (
-    <div className="default-glass rounded-md p-5 w-[80%] lg:w-[85%] h-auto lg:h-[100%] text-center">
-      <h3 className="font-georgia font-bold md:text-5xl text-3xl mb-4">
+    <div className="default-glass rounded-md p-5 w-[80%] lg:w-[85%] h-[650px] flex flex-col text-center">
+      <h3 className="font-georgia font-bold md:text-5xl text-3xl mb-4 flex-shrink-0">
         {title}
       </h3>
-      <div className="relative mb-3 w-full aspect-video overflow-hidden flex flex-col items-center">
+      <div className="relative mb-3 w-full aspect-video overflow-hidden flex flex-col items-center flex-shrink-0">
         <AnimatePresence initial={false} custom={currentImageIndex}>
           <motion.div
             key={currentImageIndex}
@@ -118,8 +118,8 @@ const MobileProjectCard: React.FC<Props> = ({
           </>
         )}
       </div>
-      <p className="text-lg font-poppins text-white mt-2">{description}</p>
-      <div>
+      <p className="text-lg font-poppins text-white mt-2 flex-grow overflow-y-auto">{description}</p>
+      <div className="flex-shrink-0">
         <div className="flex justify-center space-x-4 my-4 items-center">
           {technologies.map((tech) => (
             <div
@@ -149,7 +149,7 @@ const MobileProjectCard: React.FC<Props> = ({
           ))}
         </div>
       </div>
-      <div>
+      <div className="flex-shrink-0">
         <button
           className={`rounded-full px-2 py-1 w-full font-georgia font-bold text-2xl ${
             disabled
