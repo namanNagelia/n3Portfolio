@@ -28,15 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${poppins.variable} ${thickPoppins.variable}`}>
-      <head>
-        <style>
-          {`
-            body { font-family: ${poppins.className}, sans-serif; }
-            h1, h2, h3 { font-family: Georgia, serif; }
-          `}
-        </style>
-      </head>
-      <body>
+      <body className={poppins.className}>
         {children}
         <Analytics />
       </body>

@@ -12,6 +12,7 @@ import fastApi from "@/../public/stackIcons/fastApi.svg";
 import OpenAI from "@/../public/stackIcons/openAI.svg";
 import SocketIO from "@/../public/stackIcons/socketIO.png";
 import Firebase from "@/../public/stackIcons/firebase.png";
+import PyTorch from "@/../public/stackIcons/PyTorch.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -54,11 +55,13 @@ const MobileProjectCard: React.FC<Props> = ({
     HyperLedger: hyperLedgerLogo,
     MySQL: mySQL,
     FastApi: fastApi,
+    FastAPI: fastApi,
     OpenAI: OpenAI,
     SocketIO: SocketIO,
     Firebase: Firebase,
     Swift: Swift,
     "Google Cloud": GoogleCloud,
+    PyTorch: PyTorch,
   };
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -75,7 +78,7 @@ const MobileProjectCard: React.FC<Props> = ({
   };
 
   return (
-    <div className="default-glass rounded-md p-5 w-[80%] lg:w-[85%] h-[650px] flex flex-col text-center">
+    <div className="default-glass rounded-md p-5 w-[80%] lg:w-[85%] min-h-[650px] flex flex-col text-center">
       <h3 className="font-georgia font-bold md:text-5xl text-3xl mb-4 flex-shrink-0">
         {title}
       </h3>
@@ -118,16 +121,16 @@ const MobileProjectCard: React.FC<Props> = ({
           </>
         )}
       </div>
-      <p className="text-lg font-poppins text-white mt-2 flex-grow overflow-y-auto">{description}</p>
+      <p className="text-lg font-poppins text-white mt-2 flex-grow">{description}</p>
       <div className="flex-shrink-0">
-        <div className="flex justify-center space-x-4 my-4 items-center">
+        <div className="flex flex-nowrap justify-center gap-2 my-4 items-center overflow-hidden">
           {technologies.map((tech) => (
             <div
               key={tech}
-              className="rounded-lg overflow-hidden relative group"
+              className="rounded-lg overflow-hidden relative group flex-shrink-0"
               style={{
                 background: "linear-gradient(180deg, #041433 0%, #010918 100%)",
-                padding: "10px",
+                padding: "8px",
                 transition: "transform 0.3s ease",
               }}
               title={tech} // Tooltip showing the technology name
@@ -138,13 +141,19 @@ const MobileProjectCard: React.FC<Props> = ({
               >
                 <span className="text-white text-xs font-poppins">{tech}</span>
               </div>
-              <Image
-                src={techImages[tech]}
-                alt={tech}
-                width={50}
-                height={50}
-                className="group-hover:scale-110 group-hover:opacity-50 transition-transform duration-300 ease-in-out" // Scale effect and dim image on hover
-              />
+              {techImages[tech] ? (
+                <Image
+                  src={techImages[tech]}
+                  alt={tech}
+                  width={36}
+                  height={36}
+                  className="group-hover:scale-110 group-hover:opacity-50 transition-transform duration-300 ease-in-out" // Scale effect and dim image on hover
+                />
+              ) : (
+                <span className="flex items-center h-9 text-white text-sm font-poppins whitespace-nowrap">
+                  {tech}
+                </span>
+              )}
             </div>
           ))}
         </div>

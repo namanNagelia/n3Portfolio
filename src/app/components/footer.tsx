@@ -12,7 +12,7 @@ export default function Footer() {
     <footer className="text-white w-full fixed bottom-0 left-0">
       <div className="container mx-auto flex justify-between py-2 md:px-10 px-4 backdrop-blur-md bg-[#1D2D49]/40 md:rounded-[3rem] rounded-t-3xl items-center z-20">
         <div className="text-sm text-white/80 font-thickPoppins">
-          © 2024-2024 Naman Nagelia
+          © 2024-{new Date().getFullYear()} Naman Nagelia
         </div>
         <Image
           src={Logo}

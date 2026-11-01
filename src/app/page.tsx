@@ -14,6 +14,7 @@ import Background from "./components/Background";
 import ContactForm from "./components/contactus";
 import { Canvas } from "@react-three/fiber";
 import PlanetOne from "./components/PlanetOne";
+import HeroPlanet from "./components/HeroPlanet";
 import Spline from "@splinetool/react-spline/next";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
@@ -65,21 +66,10 @@ const Model = () => {
   );
 };
 
-const HeroPlanet = () => {
+const ResponsivePlanet = () => {
   const isWide = useMedia("(max-width: 955px)");
   const isWide2 = useMedia("(max-width: 820px)");
-  const gltf = useLoader(GLTFLoader, "./HeroPlanet.gltf");
-  // const colorMap = useLoader(TextureLoader, "finaltexture.png");
-
-  return (
-    <>
-      <ambientLight intensity={10} />
-      <primitive
-        object={gltf.scene}
-        scale={!isWide ? 1.7 : !isWide2 ? 1.5 : 1.3}
-      />
-    </>
-  );
+  return <HeroPlanet scale={!isWide ? 1.5 : !isWide2 ? 1.3 : 1} />;
 };
 
 export default function Home() {
@@ -94,7 +84,7 @@ export default function Home() {
   const AmazonProjectKuiper = {
     title: "Amazon Project Kuiper",
     description:
-      "In a collaboration with the University of Maryland's App Dev Club, we designed a low Earth orbit satellite visualization system. This was designed for Project Kuiper as a way to visualize satellite collision risk to non-technical stakeholders at Amazon, and use game theory and hyperledger frameworks to help operators choose the best path to take in case of a collision.",
+      "A satellite visualizer for Amazon's Project Kuiper that shows collision risks and helps pick safer paths.",
     technologies: [
       "React.js",
       "Next.js",
@@ -112,17 +102,18 @@ export default function Home() {
   const SparkMySport = {
     title: "Spark My Sport",
     description:
-      "Designed the entire website and web app for spark my sport, a sports analytics startup aimed at allowing grassroots athletes get their stats visualized and recognized by scouts. Used OpenAI to make AI driven insights, alongside live stats, streaming, and graphs. ",
+      "The website and app for a sports analytics startup used by over 1,000 coaches, scouts, and athletes.",
     technologies: [
       "React.js",
       "Next.js",
       "MySQL",
       "OpenAI",
       "SocketIO",
+      "PyTorch",
       "Firebase",
     ],
     image: [sms4, sms3, sms2, sms1],
-    link: "https://sparkmysport.com/",
+    link: "https://web.sparkmysport.com/",
     github: "https://github.com/example",
     demo: "https://example.com/demo",
     isMobile: false,
@@ -131,15 +122,15 @@ export default function Home() {
   const FinSims = {
     title: "Fin Sims",
     description:
-      "An AI Stock Simulation. Currently, used a GRU and LSTM Pytorch Models to help predict and get trading signals, and coded my own method to get RSI",
-    technologies: ["Python", "PyTorch"],
+      "A stock research tool I built that tests trading strategies on decades of market data.",
+    technologies: ["Python", "PyTorch", "FastAPI"],
     image: [FinSims2, FinSims1],
     link: "https://github.com/FinSims/financial-market",
   };
   const BackBoardStats = {
     title: "Backboard Stats",
     description:
-      "Full Stack Website and Mobile App I am developing for Next Gen Basketball Statistics. Using an NBA API, I get data and display live stats, advanced stats, and allow players to be compared to each other with percentile, shot charts, and overall computed ratings. Betting Odds and Mobile App are in Development!",
+      "A basketball stats site where you can compare players, view shot charts, and follow live games.",
     technologies: ["React.js", "Next.js", "Supabase", "Python", "Flask"],
     image: [
       backboardStats5,
@@ -257,10 +248,10 @@ export default function Home() {
               {isWide2 && (
                 <div className="fixed top-0 left-0 w-screen h-screen z-20"></div>
               )}
-              <Canvas className="">
+              <Canvas dpr={[1, 1.5]}>
                 <Suspense fallback={null}>
-                  <OrbitControls enableZoom={false} autoRotate />
-                  <HeroPlanet />
+                  <OrbitControls enableZoom={false} enablePan={false} />
+                  <ResponsivePlanet />
                 </Suspense>
               </Canvas>
             </div>
@@ -282,7 +273,7 @@ export default function Home() {
               Naman Nagelia
             </h1>
             <h2 className="md:text-2xl text-xl font-thickPoppins text-transparent bg-clip-text bg-gradient-to-b from-[#E63E60] to-[#A32972] md:mt-4 mt-2 text-center capitalize tracking-[.25em]">
-              SOFTWARE & AI DEVELOPER
+              SOFTWARE & AI ENGINEER
             </h2>
           </ParallaxLayer>
           <div
@@ -304,11 +295,10 @@ export default function Home() {
           </div>
           <div className="items-center flex flex-col">
             <p className="font-poppins text-center text-white text-lg md:text-3xl p-12 md:px-36">
-              Hey! 👋 I am Naman Nagelia, a student at the University of
-              Maryland studying Computer Science, and Business Analytics. I'm a
-              Software and AI/ML engineer looking to create innovative solutions
-              in fields I am passionate about. If you want to learn more, check
-              out my resume and projects!
+              Hey! 👋 I&apos;m Naman Nagelia, a Software Engineer at Amazon building
+              LLM-powered automation. I graduated from the University of Maryland
+              with a double major in Computer Science and Finance, and I love
+              building AI products end to end. Check out my resume and projects!
             </p>
             <a
               href="/Naman_Nagelia_Resume.pdf"
